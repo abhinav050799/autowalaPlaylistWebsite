@@ -37,12 +37,10 @@
     body {
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       color: white;
       background: #080808;
       overflow-x: hidden;
+      position: relative;
     }
 
     /* =========================
@@ -53,20 +51,8 @@
       position: fixed;
       inset: 0;
       z-index: -2;
-
       background-color: #090909;
-
-      /*
-        Apni image ka path yahan rakho.
-
-        Agar HTML aur image same project folder mein hai:
-        background-image: url("image/autoimg.jpg");
-
-        Ye recommended hai.
-      */
-
       background-image: url("image/autoimg.jpg");
-
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -74,94 +60,54 @@
 
     .saloon-bg::after {
       content: "";
-      /* position: absolute; */
+      position: absolute;
       inset: 0;
-
-      background: rgba(0, 0, 0, 0.68);
-
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
-
-    /* =========================
-       MAIN CARD
-    ========================= */
-
-    .saloon-card {
-      position: relative;
-
-      width: 100%;
-      max-width: 780px;
-
-      margin: 2rem 1.5rem;
-      padding: 2rem 1.8rem 2.2rem;
-
-      background: rgba(255, 255, 255, 0.045);
-
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
-
-      border: 1px solid rgba(255, 255, 255, 0.09);
-
-      border-radius: 56px;
-
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.25);
     }
 
     /* =========================
        TOP BAR
     ========================= */
 
-    .top-corner {
-      position: absolute;
-
+    .top-bar {
+      position: fixed;
       top: 1.5rem;
       left: 1.8rem;
       right: 1.8rem;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 10;
+    }
 
-      z-index: 5;
+    .top-bar-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .online-badge {
-      background: rgba(0, 0, 0, 0.35);
-
-      backdrop-filter: blur(5px);
-
-      border: 1px solid rgba(255, 255, 255, 0.07);
-
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-
-      padding: 0.4rem 1rem 0.4rem 0.9rem;
-
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      padding: 0.35rem 0.9rem;
       border-radius: 100px;
-
       display: inline-flex;
       align-items: center;
-
       gap: 0.5rem;
-
       font-size: 0.85rem;
       font-weight: 500;
-
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.95);
     }
 
     .online-dot {
-      width: 10px;
-      height: 10px;
-
-      background: #4ade80;
-
+      width: 9px;
+      height: 9px;
+      background: #22c55e;
       border-radius: 50%;
-
-      box-shadow: 0 0 10px #4ade80aa;
-
+      box-shadow: 0 0 10px #22c55e;
       animation: pulse-dot 2s infinite;
     }
 
@@ -170,12 +116,10 @@
         opacity: 0.6;
         transform: scale(0.95);
       }
-
       50% {
         opacity: 1;
-        transform: scale(1.15);
+        transform: scale(1.2);
       }
-
       100% {
         opacity: 0.6;
         transform: scale(0.95);
@@ -187,106 +131,93 @@
     ========================= */
 
     .pill-link {
-      background: rgba(0, 0, 0, 0.3);
-
-      backdrop-filter: blur(4px);
-
-      border: 1px solid rgba(255, 255, 255, 0.07);
-
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 100px;
-
-      padding: 0.35rem 0.9rem 0.35rem 0.7rem;
-
+      padding: 0.35rem 0.9rem;
       display: inline-flex;
       align-items: center;
-
       gap: 0.4rem;
-
       color: white;
-
       text-decoration: none;
-
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 500;
-
-      transition: 0.2s;
-
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     .pill-link:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.15);
       color: white;
       transform: translateY(-1px);
     }
 
     .pill-link i {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     /* =========================
-       LOGO
+       HERO / LOGO SECTION
     ========================= */
 
-    .logo {
+    .logo-container {
+      margin-top: 12vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.5rem;
       text-align: center;
-
-      margin-top: 2.5rem;
-      margin-bottom: 2rem;
     }
 
-    .logo h1 {
-      font-size: clamp(2rem, 7vw, 3.5rem);
-
-      font-weight: 700;
-
-      letter-spacing: 2px;
-
-      color: white;
-
-      text-shadow:
-        0 5px 25px rgba(0, 0, 0, 0.8);
+    .saloon-hindi-svg {
+      width: 60vw;
+      max-width: 460px;
+      height: auto;
+      filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.6));
     }
 
     /* =========================
-       YOUTUBE PLAYER
+       YOUTUBE PLAYER (HIDDEN)
     ========================= */
 
     #youtube-player {
       position: absolute;
-
       width: 1px;
       height: 1px;
-
       left: -9999px;
       top: -9999px;
-
       opacity: 0;
-
       pointer-events: none;
     }
 
     /* =========================
-       PLAYER
+       FLOATING PLAYER
     ========================= */
+
+    .player-wrapper {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 2rem);
+      max-width: 680px;
+      z-index: 20;
+    }
 
     .player-glass {
       width: 100%;
-
-      background: rgba(255, 255, 255, 0.055);
-
-      backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
-
-      border: 1px solid rgba(255, 255, 255, 0.09);
-
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 100px;
-
-      padding: 0.55rem;
-
+      padding: 0.6rem 0.8rem;
       box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
 
     /* =========================
@@ -295,71 +226,47 @@
 
     .album-wrapper {
       position: relative;
-
-      width: 64px;
-      height: 64px;
-
+      width: 58px;
+      height: 58px;
       flex-shrink: 0;
-
       cursor: pointer;
     }
 
     .album-art {
-      width: 64px;
-      height: 64px;
-
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
-
       object-fit: cover;
-
       background: #222;
-
-      border: 2px solid rgba(255, 255, 255, 0.08);
-
-      box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.6);
-
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
       animation: spin 12s linear infinite;
-
       animation-play-state: paused;
     }
 
     @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .play-pause-center {
       position: absolute;
-
       left: 50%;
       top: 50%;
-
       transform: translate(-50%, -50%);
-
-      width: 26px;
-      height: 26px;
-
+      width: 24px;
+      height: 24px;
       background: rgba(0, 0, 0, 0.75);
-
       border-radius: 50%;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      border: 1px solid rgba(255, 255, 255, 0.2);
-
+      border: 1px solid rgba(255, 255, 255, 0.25);
       pointer-events: none;
     }
 
     .play-pause-center i {
-      font-size: 13px;
+      font-size: 12px;
     }
 
     /* =========================
@@ -367,23 +274,21 @@
     ========================= */
 
     .track-info {
-      min-width: 150px;
+      min-width: 140px;
     }
 
     .track-title {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
-
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: #ffffff;
     }
 
     .track-artist {
       font-size: 0.75rem;
-
-      color: rgba(255, 255, 255, 0.55);
-
+      color: rgba(255, 255, 255, 0.65);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -395,45 +300,31 @@
 
     .progress-row {
       display: flex;
-
       align-items: center;
-
       gap: 8px;
-
-      margin-top: 6px;
+      margin-top: 5px;
     }
 
     .time-label {
       font-size: 0.68rem;
-
-      color: rgba(255, 255, 255, 0.5);
-
-      min-width: 30px;
+      color: rgba(255, 255, 255, 0.55);
+      min-width: 28px;
     }
 
     .progress-custom {
-      height: 5px;
-
+      height: 4px;
       flex: 1;
-
-      background: rgba(255, 255, 255, 0.15);
-
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 10px;
-
       overflow: hidden;
-
       cursor: pointer;
     }
 
     .progress-fill {
       height: 100%;
-
       width: 0%;
-
-      background: white;
-
+      background: #ffffff;
       border-radius: 10px;
-
       transition: width 0.15s linear;
     }
 
@@ -442,181 +333,137 @@
     ========================= */
 
     .ctrl-btn {
-      width: 38px;
-      height: 38px;
-
+      width: 36px;
+      height: 36px;
       border: none;
-
       border-radius: 50%;
-
       background: transparent;
-
-      color: rgba(255, 255, 255, 0.75);
-
+      color: rgba(255, 255, 255, 0.85);
       display: flex;
-
       align-items: center;
       justify-content: center;
-
-      font-size: 1.15rem;
-
-      transition: 0.15s;
-
+      font-size: 1.1rem;
+      transition: all 0.15s ease;
       cursor: pointer;
     }
 
     .ctrl-btn:hover {
-      background: rgba(255, 255, 255, 0.09);
-
-      color: white;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
     }
 
     .ctrl-btn:active {
-      transform: scale(0.9);
+      transform: scale(0.92);
     }
 
     .play-btn {
-      width: 46px;
-      height: 46px;
-
-      background: white;
-
+      width: 44px;
+      height: 44px;
+      background: #ffffff;
       color: #080808;
-
-      font-size: 1.4rem;
-
-      box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.5);
+      font-size: 1.35rem;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
     }
 
     .play-btn:hover {
       background: #f0f0f0;
-
-      color: #000;
-
-      transform: scale(1.04);
+      color: #000000;
+      transform: scale(1.05);
     }
 
     /* =========================
-       STATUS
+       STATUS & FOOTER
     ========================= */
 
     .player-status {
       text-align: center;
-
-      margin-top: 12px;
-
-      font-size: 0.68rem;
-
-      color: rgba(255, 255, 255, 0.45);
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.55);
     }
 
     .status-dot {
       display: inline-block;
-
-      width: 7px;
-      height: 7px;
-
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-
       background: #facc15;
-
       margin-right: 5px;
     }
 
     .status-dot.playing {
       background: #4ade80;
-
       box-shadow: 0 0 8px #4ade80;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
     .footer-text {
       text-align: center;
-
-      margin-top: 16px;
-
-      font-size: 0.68rem;
-
-      opacity: 0.3;
-
+      margin-top: 4px;
+      font-size: 0.65rem;
+      opacity: 0.4;
       letter-spacing: 0.05em;
     }
 
     /* =========================
-       MOBILE
+       MOBILE RESPONSIVE
     ========================= */
 
     @media (max-width: 600px) {
-
-      body {
-        align-items: center;
-      }
-
-      .saloon-card {
-        margin: 0.8rem;
-
-        padding: 1.2rem 0.8rem 1.5rem;
-
-        border-radius: 30px;
-      }
-
-      .top-corner {
+      .top-bar {
         position: relative;
-
         top: auto;
         left: auto;
         right: auto;
-
-        margin-bottom: 10px;
-
-        justify-content: center;
-
-        gap: 8px;
-
+        padding: 1.2rem 1rem 0;
         flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
       }
 
-      .logo {
-        margin-top: 0.8rem;
-        margin-bottom: 1.5rem;
+      .top-bar-center {
+        position: static;
+        transform: none;
+        order: -1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+
+      .logo-container {
+        margin-top: 4vh;
+      }
+
+      .saloon-hindi-svg {
+        width: 80vw;
+      }
+
+      .player-wrapper {
+        bottom: 1.2rem;
+        width: calc(100% - 1.2rem);
       }
 
       .player-glass {
-        border-radius: 30px;
-
-        padding: 10px;
-
+        border-radius: 28px;
+        padding: 8px 12px;
         flex-wrap: wrap;
-
-        justify-content: center;
       }
 
       .track-info {
-        width: calc(100% - 80px);
-
+        width: calc(100% - 70px);
         min-width: 0;
       }
 
       .player-controls {
         width: 100%;
-
         justify-content: center;
-
-        margin-top: 5px;
+        margin-top: 4px;
       }
 
       .album-wrapper,
       .album-art {
-        width: 58px;
-        height: 58px;
-      }
-
-      .online-badge {
-        font-size: 0.72rem;
+        width: 52px;
+        height: 52px;
       }
     }
   </style>
@@ -627,68 +474,56 @@
   <!-- BACKGROUND -->
   <div class="saloon-bg"></div>
 
-  <!-- MAIN CARD -->
-  <div class="saloon-card">
-
-    <!-- TOP -->
-    <div class="top-corner">
-
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-center">
       <div class="online-badge">
         <span class="online-dot"></span>
-        <span>30</span>
-        <span style="opacity:0.6;">
-          online
-        </span>
-      </div>
-
-      <div class="d-flex gap-2">
-
-        <a
-          href="https://open.spotify.com/"
-          target="_blank"
-          rel="noopener"
-          class="pill-link"
-        >
-          <i class="bi bi-spotify"></i>
-          <span class="d-none d-sm-inline">Spotify</span>
-          <i class="bi bi-box-arrow-up-right"></i>
-        </a>
-
-        <a
-          href="https://music.youtube.com/"
-          target="_blank"
-          rel="noopener"
-          class="pill-link"
-        >
-          <i class="bi bi-youtube"></i>
-          <span class="d-none d-sm-inline">YT Music</span>
-          <i class="bi bi-box-arrow-up-right"></i>
-        </a>
-
+        <span>27</span>
+        <span style="opacity:0.6;">online</span>
       </div>
     </div>
 
+    <div class="d-flex gap-2 ms-auto">
+      <a
+        href="https://open.spotify.com/"
+        target="_blank"
+        rel="noopener"
+        class="pill-link"
+      >
+        <i class="bi bi-spotify"></i>
+        <span class="d-none d-sm-inline">Spotify</span>
+        <i class="bi bi-box-arrow-up-right"></i>
+      </a>
 
-    <!-- LOGO -->
-    <div class="logo">
-      <h1>
-         <img
-  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 120'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia, serif' font-weight='700' font-size='48' fill='%23ffffff' letter-spacing='3'%3Eदिलक्स सलून%3C/text%3E%3C/svg%3E"
-  alt="दिलक्स सलून"
-  class="logo-svg"
-  style="color:transparent;"
->
-
-
-      </h1>
+      <a
+        href="https://music.youtube.com/"
+        target="_blank"
+        rel="noopener"
+        class="pill-link"
+      >
+        <i class="bi bi-youtube"></i>
+        <span class="d-none d-sm-inline">YT Music</span>
+        <i class="bi bi-box-arrow-up-right"></i>
+      </a>
     </div>
+  </div>
 
+  <!-- LOGO (HINDI TYPOGRAPHY SVG) -->
+  <div class="logo-container">
+    <h1>
+      <svg class="saloon-hindi-svg" viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="50%" y="120" text-anchor="middle" fill="#FFFFFF" font-family="'Inter', 'Noto Sans Devanagari', sans-serif" font-weight="900" font-size="105" letter-spacing="2">डीलक्स</text>
+        <text x="50%" y="260" text-anchor="middle" fill="#FFFFFF" font-family="'Inter', 'Noto Sans Devanagari', sans-serif" font-weight="900" font-size="115" letter-spacing="2">सैलून</text>
+      </svg>
+    </h1>
+  </div>
 
-    <!-- HIDDEN YOUTUBE -->
-    <div id="youtube-player"></div>
+  <!-- HIDDEN YOUTUBE PLAYER -->
+  <div id="youtube-player"></div>
 
-
-    <!-- PLAYER -->
+  <!-- FLOATING PLAYER -->
+  <div class="player-wrapper">
     <div class="player-glass d-flex align-items-center gap-3">
 
       <!-- ALBUM -->
@@ -697,77 +532,38 @@
         id="albumWrapper"
         title="Play / Pause"
       >
-
         <img
           id="albumArt"
           class="album-art"
           src="https://i.ytimg.com/vi/oq5Ocx_rEv8/hqdefault.jpg"
           alt="Album Art"
         >
-
         <div class="play-pause-center">
-          <i
-            id="overlayIcon"
-            class="bi bi-play-fill"
-          ></i>
+          <i id="overlayIcon" class="bi bi-play-fill"></i>
         </div>
-
       </div>
-
 
       <!-- TRACK INFO -->
       <div class="track-info flex-grow-1">
-
-        <div
-          id="trackTitle"
-          class="track-title"
-        >
+        <div id="trackTitle" class="track-title">
           Kal Ho Naa Ho
         </div>
-
-        <div
-          id="trackArtist"
-          class="track-artist"
-        >
+        <div id="trackArtist" class="track-artist">
           Sonu Nigam
         </div>
 
-
         <!-- PROGRESS -->
         <div class="progress-row">
-
-          <span
-            id="currentTime"
-            class="time-label"
-          >
-            0:00
-          </span>
-
-          <div
-            id="progressContainer"
-            class="progress-custom"
-          >
-            <div
-              id="progressFill"
-              class="progress-fill"
-            ></div>
+          <span id="currentTime" class="time-label">0:00</span>
+          <div id="progressContainer" class="progress-custom">
+            <div id="progressFill" class="progress-fill"></div>
           </div>
-
-          <span
-            id="durationTime"
-            class="time-label"
-          >
-            0:00
-          </span>
-
+          <span id="durationTime" class="time-label">0:00</span>
         </div>
-
       </div>
-
 
       <!-- CONTROLS -->
       <div class="player-controls d-flex align-items-center gap-1">
-
         <button
           id="prevBtn"
           class="ctrl-btn"
@@ -778,7 +574,6 @@
           <i class="bi bi-skip-backward-fill"></i>
         </button>
 
-
         <button
           id="playBtn"
           class="ctrl-btn play-btn"
@@ -786,12 +581,8 @@
           aria-label="Play"
           title="Play"
         >
-          <i
-            id="playIcon"
-            class="bi bi-play-fill"
-          ></i>
+          <i id="playIcon" class="bi bi-play-fill"></i>
         </button>
-
 
         <button
           id="nextBtn"
@@ -802,41 +593,26 @@
         >
           <i class="bi bi-skip-forward-fill"></i>
         </button>
-
       </div>
 
     </div>
 
-
     <!-- STATUS -->
     <div class="player-status">
-
-      <span
-        id="statusDot"
-        class="status-dot"
-      ></span>
-
-      <span id="statusText">
-        Press Play to start music
-      </span>
-
+      <span id="statusDot" class="status-dot"></span>
+      <span id="statusText">Press Play to start music</span>
     </div>
-
 
     <!-- FOOTER -->
     <div class="footer-text">
       ⚡ 90s Bollywood bangers · auto-play playlist
     </div>
-
   </div>
 
-
   <!-- =========================
-       YOUTUBE IFRAME API
+        YOUTUBE IFRAME API
   ========================= -->
-
   <script src="https://www.youtube.com/iframe_api"></script>
-
 
   <script>
     /*
@@ -845,854 +621,366 @@
     ============================================================
     */
 
-
-    /* =========================
-       PLAYLIST
-
-       IMPORTANT:
-       YouTube video ID yahan se aata hai:
-
-       https://www.youtube.com/watch?v=VIDEO_ID
-
-       Example:
-       https://www.youtube.com/watch?v=oq5Ocx_rEv8
-
-       ID = oq5Ocx_rEv8
-    ========================= */
-
     const playlist = [
-
       {
         id: "oq5Ocx_rEv8",
         title: "Kal Ho Naa Ho",
         artist: "Sonu Nigam",
         cover: "https://i.ytimg.com/vi/oq5Ocx_rEv8/hqdefault.jpg"
       },
-
       {
         id: "39BOqZO8xaM",
         title: "Tera Ban Jaunga",
         artist: "Akhil Sachdeva",
         cover: "https://i.ytimg.com/vi/39BOqZO8xaM/hqdefault.jpg"
       },
-
       {
         id: "xZw3g5B0x_U",
         title: "Tum Hi Ho",
         artist: "Arijit Singh",
         cover: "https://i.ytimg.com/vi/xZw3g5B0x_U/hqdefault.jpg"
       },
-
       {
         id: "y8uXhLjl9Kk",
         title: "Mujhse Mohabbat Ka Izhaar",
         artist: "Satrang Music Official",
         cover: "https://i.ytimg.com/vi/y8uXhLjl9Kk/hqdefault.jpg"
       }
-
     ];
-
 
     /* =========================
        VARIABLES
     ========================= */
 
     let player = null;
-
     let playerReady = false;
-
     let currentIndex = 0;
-
     let isPlaying = false;
-
     let userStarted = false;
-
     let progressTimer = null;
-
 
     /* =========================
        DOM
     ========================= */
 
-    const playBtn =
-      document.getElementById("playBtn");
-
-    const playIcon =
-      document.getElementById("playIcon");
-
-    const overlayIcon =
-      document.getElementById("overlayIcon");
-
-    const albumArt =
-      document.getElementById("albumArt");
-
-    const albumWrapper =
-      document.getElementById("albumWrapper");
-
-    const trackTitle =
-      document.getElementById("trackTitle");
-
-    const trackArtist =
-      document.getElementById("trackArtist");
-
-    const currentTime =
-      document.getElementById("currentTime");
-
-    const durationTime =
-      document.getElementById("durationTime");
-
-    const progressFill =
-      document.getElementById("progressFill");
-
-    const progressContainer =
-      document.getElementById("progressContainer");
-
-    const statusText =
-      document.getElementById("statusText");
-
-    const statusDot =
-      document.getElementById("statusDot");
-
+    const playBtn = document.getElementById("playBtn");
+    const playIcon = document.getElementById("playIcon");
+    const overlayIcon = document.getElementById("overlayIcon");
+    const albumArt = document.getElementById("albumArt");
+    const albumWrapper = document.getElementById("albumWrapper");
+    const trackTitle = document.getElementById("trackTitle");
+    const trackArtist = document.getElementById("trackArtist");
+    const currentTime = document.getElementById("currentTime");
+    const durationTime = document.getElementById("durationTime");
+    const progressFill = document.getElementById("progressFill");
+    const progressContainer = document.getElementById("progressContainer");
+    const statusText = document.getElementById("statusText");
+    const statusDot = document.getElementById("statusDot");
 
     /* =========================
        FORMAT TIME
     ========================= */
 
     function formatTime(seconds) {
-
-      if (
-        !seconds ||
-        isNaN(seconds) ||
-        seconds < 0
-      ) {
+      if (!seconds || isNaN(seconds) || seconds < 0) {
         return "0:00";
       }
-
-      const mins =
-        Math.floor(seconds / 60);
-
-      const secs =
-        Math.floor(seconds % 60);
-
-      return (
-        mins +
-        ":" +
-        String(secs).padStart(2, "0")
-      );
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return mins + ":" + String(secs).padStart(2, "0");
     }
-
 
     /* =========================
        UPDATE UI
     ========================= */
 
     function updatePlayButton(playing) {
-
       isPlaying = playing;
-
       if (playing) {
-
-        playIcon.className =
-          "bi bi-pause-fill";
-
-        overlayIcon.className =
-          "bi bi-pause-fill";
-
-        albumArt.style.animationPlayState =
-          "running";
-
-        statusDot.classList.add(
-          "playing"
-        );
-
-        statusText.textContent =
-          "Now playing";
-
+        playIcon.className = "bi bi-pause-fill";
+        overlayIcon.className = "bi bi-pause-fill";
+        albumArt.style.animationPlayState = "running";
+        statusDot.classList.add("playing");
+        statusText.textContent = "Now playing";
       } else {
-
-        playIcon.className =
-          "bi bi-play-fill";
-
-        overlayIcon.className =
-          "bi bi-play-fill";
-
-        albumArt.style.animationPlayState =
-          "paused";
-
-        statusDot.classList.remove(
-          "playing"
-        );
-
-        statusText.textContent =
-          "Paused";
+        playIcon.className = "bi bi-play-fill";
+        overlayIcon.className = "bi bi-play-fill";
+        albumArt.style.animationPlayState = "paused";
+        statusDot.classList.remove("playing");
+        statusText.textContent = "Paused";
       }
     }
-
 
     /* =========================
        LOAD TRACK UI
     ========================= */
 
     function updateTrackUI(index) {
-
-      const song =
-        playlist[index];
-
+      const song = playlist[index];
       if (!song) return;
 
-      trackTitle.textContent =
-        song.title;
-
-      trackArtist.textContent =
-        song.artist;
-
-      albumArt.src =
-        song.cover;
-
-      currentTime.textContent =
-        "0:00";
-
-      durationTime.textContent =
-        "0:00";
-
-      progressFill.style.width =
-        "0%";
+      trackTitle.textContent = song.title;
+      trackArtist.textContent = song.artist;
+      albumArt.src = song.cover;
+      currentTime.textContent = "0:00";
+      durationTime.textContent = "0:00";
+      progressFill.style.width = "0%";
     }
-
 
     /* =========================
        LOAD SONG
     ========================= */
 
-    function loadTrack(
-      index,
-      autoPlay = false
-    ) {
-
-      if (!playerReady || !player) {
-        return;
-      }
-
-      if (
-        index < 0 ||
-        index >= playlist.length
-      ) {
-        return;
-      }
+    function loadTrack(index, autoPlay = false) {
+      if (!playerReady || !player) return;
+      if (index < 0 || index >= playlist.length) return;
 
       currentIndex = index;
-
-      const song =
-        playlist[currentIndex];
+      const song = playlist[currentIndex];
 
       updateTrackUI(currentIndex);
-
-      statusText.textContent =
-        "Loading " + song.title + "...";
-
-      /*
-        cueVideoById = video load karega
-        lekin automatically play nahi karega.
-      */
+      statusText.textContent = "Loading " + song.title + "...";
 
       if (autoPlay) {
-
-        player.loadVideoById({
-          videoId: song.id,
-          startSeconds: 0
-        });
-
+        player.loadVideoById({ videoId: song.id, startSeconds: 0 });
       } else {
-
-        player.cueVideoById({
-          videoId: song.id,
-          startSeconds: 0
-        });
-
+        player.cueVideoById({ videoId: song.id, startSeconds: 0 });
       }
     }
-
 
     /* =========================
        PLAY
     ========================= */
 
     function playMusic() {
-
       if (!playerReady || !player) {
-
-        statusText.textContent =
-          "YouTube player loading...";
-
+        statusText.textContent = "YouTube player loading...";
         return;
       }
-
       userStarted = true;
-
-      /*
-        Browser autoplay policy:
-        Play button click is user interaction,
-        therefore audio can start.
-      */
-
       player.playVideo();
-
-      statusText.textContent =
-        "Starting music...";
+      statusText.textContent = "Starting music...";
     }
-
 
     /* =========================
        PAUSE
     ========================= */
 
     function pauseMusic() {
-
-      if (!playerReady || !player) {
-        return;
-      }
-
+      if (!playerReady || !player) return;
       player.pauseVideo();
     }
-
 
     /* =========================
        TOGGLE
     ========================= */
 
     function togglePlay() {
-
       if (!playerReady) {
-
-        statusText.textContent =
-          "YouTube player loading...";
-
+        statusText.textContent = "YouTube player loading...";
         return;
       }
-
       if (isPlaying) {
-
         pauseMusic();
-
       } else {
-
         playMusic();
-
       }
     }
-
 
     /* =========================
        NEXT TRACK
     ========================= */
 
     function nextTrack() {
-
-      currentIndex =
-        (currentIndex + 1) %
-        playlist.length;
-
+      currentIndex = (currentIndex + 1) % playlist.length;
       updateTrackUI(currentIndex);
 
-      const song =
-        playlist[currentIndex];
+      const song = playlist[currentIndex];
+      statusText.textContent = "Loading next song...";
 
-      statusText.textContent =
-        "Loading next song...";
-
-      /*
-        Next button is a user interaction,
-        so autoplay works after clicking.
-      */
-
-      player.loadVideoById({
-        videoId: song.id,
-        startSeconds: 0
-      });
-
+      player.loadVideoById({ videoId: song.id, startSeconds: 0 });
       userStarted = true;
     }
-
 
     /* =========================
        PREVIOUS TRACK
     ========================= */
 
     function prevTrack() {
-
-      currentIndex =
-        (
-          currentIndex -
-          1 +
-          playlist.length
-        ) %
-        playlist.length;
-
+      currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
       updateTrackUI(currentIndex);
 
-      const song =
-        playlist[currentIndex];
+      const song = playlist[currentIndex];
+      statusText.textContent = "Loading previous song...";
 
-      statusText.textContent =
-        "Loading previous song...";
-
-      player.loadVideoById({
-        videoId: song.id,
-        startSeconds: 0
-      });
-
+      player.loadVideoById({ videoId: song.id, startSeconds: 0 });
       userStarted = true;
     }
-
 
     /* =========================
        YOUTUBE API READY
     ========================= */
 
-    window.onYouTubeIframeAPIReady =
-      function () {
-
-        console.log(
-          "YouTube API Ready"
-        );
-
-        player =
-          new YT.Player(
-            "youtube-player",
-            {
-
-              width: "1",
-
-              height: "1",
-
-              videoId:
-                playlist[0].id,
-
-              playerVars: {
-
-                /*
-                  Start muted because browser
-                  autoplay is normally blocked
-                  when audio is enabled.
-                */
-                autoplay: 0,
-
-                controls: 0,
-
-                rel: 0,
-
-                playsinline: 1,
-
-                modestbranding: 1,
-
-                iv_load_policy: 3
-
-              },
-
-              events: {
-
-                onReady:
-                  onPlayerReady,
-
-                onStateChange:
-                  onPlayerStateChange,
-
-                onError:
-                  onPlayerError
-
-              }
-
-            }
-          );
-      };
-
+    window.onYouTubeIframeAPIReady = function () {
+      console.log("YouTube API Ready");
+      player = new YT.Player("youtube-player", {
+        width: "1",
+        height: "1",
+        videoId: playlist[0].id,
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          rel: 0,
+          playsinline: 1,
+          modestbranding: 1,
+          iv_load_policy: 3
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+          onError: onPlayerError
+        }
+      });
+    };
 
     /* =========================
        PLAYER READY
     ========================= */
 
     function onPlayerReady(event) {
-
-      console.log(
-        "YouTube Player Ready"
-      );
-
+      console.log("YouTube Player Ready");
       playerReady = true;
 
-      updateTrackUI(
-        currentIndex
-      );
+      updateTrackUI(currentIndex);
+      statusText.textContent = "Press Play to start music";
 
-      statusText.textContent =
-        "Press Play to start music";
-
-      /*
-        Progress updater
-      */
-
-      progressTimer =
-        setInterval(
-          updateProgress,
-          500
-        );
+      progressTimer = setInterval(updateProgress, 500);
     }
-
 
     /* =========================
        PLAYER STATE
     ========================= */
 
     function onPlayerStateChange(event) {
+      const state = event.data;
+      console.log("YouTube state:", state);
 
-      const state =
-        event.data;
-
-
-      console.log(
-        "YouTube state:",
-        state
-      );
-
-
-      /* PLAYING */
-
-      if (
-        state ===
-        YT.PlayerState.PLAYING
-      ) {
-
+      if (state === YT.PlayerState.PLAYING) {
         updatePlayButton(true);
-
-      }
-
-
-      /* PAUSED */
-
-      else if (
-        state ===
-        YT.PlayerState.PAUSED
-      ) {
-
+      } else if (state === YT.PlayerState.PAUSED) {
         updatePlayButton(false);
-
-      }
-
-
-      /* BUFFERING */
-
-      else if (
-        state ===
-        YT.PlayerState.BUFFERING
-      ) {
-
-        statusText.textContent =
-          "Buffering...";
-
-      }
-
-
-      /* ENDED */
-
-      else if (
-        state ===
-        YT.PlayerState.ENDED
-      ) {
-
+      } else if (state === YT.PlayerState.BUFFERING) {
+        statusText.textContent = "Buffering...";
+      } else if (state === YT.PlayerState.ENDED) {
         updatePlayButton(false);
-
-        /*
-          Song khatam hote hi
-          automatically next song.
-        */
-
-        setTimeout(
-          function () {
-
-            nextTrack();
-
-          },
-          300
-        );
+        setTimeout(function () {
+          nextTrack();
+        }, 300);
       }
     }
-
 
     /* =========================
        YOUTUBE ERROR
     ========================= */
 
     function onPlayerError(event) {
+      console.error("YouTube Error:", event.data);
+      statusText.textContent = "This track cannot play. Trying next...";
 
-      console.error(
-        "YouTube Error:",
-        event.data
-      );
-
-      statusText.textContent =
-        "This track cannot play. Trying next...";
-
-      /*
-        Agar video deleted / restricted /
-        unavailable hai to next song.
-      */
-
-      setTimeout(
-        function () {
-
-          nextTrack();
-
-        },
-        1000
-      );
+      setTimeout(function () {
+        nextTrack();
+      }, 1000);
     }
-
 
     /* =========================
        PROGRESS
     ========================= */
 
     function updateProgress() {
-
-      if (
-        !playerReady ||
-        !player
-      ) {
-        return;
-      }
+      if (!playerReady || !player) return;
 
       try {
+        const current = player.getCurrentTime();
+        const duration = player.getDuration();
 
-        const current =
-          player.getCurrentTime();
-
-        const duration =
-          player.getDuration();
-
-        if (
-          duration &&
-          duration > 0
-        ) {
-
-          const percent =
-            (
-              current /
-              duration
-            ) * 100;
-
-          progressFill.style.width =
-            Math.min(
-              100,
-              percent
-            ) + "%";
-
-          currentTime.textContent =
-            formatTime(current);
-
-          durationTime.textContent =
-            formatTime(duration);
+        if (duration && duration > 0) {
+          const percent = (current / duration) * 100;
+          progressFill.style.width = Math.min(100, percent) + "%";
+          currentTime.textContent = formatTime(current);
+          durationTime.textContent = formatTime(duration);
         }
-
       } catch (error) {
-
-        console.log(
-          "Progress error",
-          error
-        );
-
+        console.log("Progress error", error);
       }
     }
-
 
     /* =========================
        SEEK
     ========================= */
 
-    progressContainer.addEventListener(
-      "click",
-      function (event) {
+    progressContainer.addEventListener("click", function (event) {
+      if (!playerReady || !player) return;
 
-        if (
-          !playerReady ||
-          !player
-        ) {
-          return;
-        }
+      const rect = this.getBoundingClientRect();
+      const clickX = event.clientX - rect.left;
+      const percentage = Math.max(0, Math.min(1, clickX / rect.width));
 
-        const rect =
-          this.getBoundingClientRect();
+      const duration = player.getDuration();
 
-        const clickX =
-          event.clientX -
-          rect.left;
-
-        const percentage =
-          Math.max(
-            0,
-            Math.min(
-              1,
-              clickX /
-              rect.width
-            )
-          );
-
-        const duration =
-          player.getDuration();
-
-        if (
-          duration &&
-          duration > 0
-        ) {
-
-          player.seekTo(
-            percentage * duration,
-            true
-          );
-        }
+      if (duration && duration > 0) {
+        player.seekTo(percentage * duration, true);
       }
-    );
-
+    });
 
     /* =========================
        BUTTON EVENTS
     ========================= */
 
-    playBtn.addEventListener(
-      "click",
-      function () {
+    playBtn.addEventListener("click", function () {
+      togglePlay();
+    });
 
-        togglePlay();
+    albumWrapper.addEventListener("click", function () {
+      togglePlay();
+    });
 
-      }
-    );
+    document.getElementById("nextBtn").addEventListener("click", function () {
+      if (playerReady) nextTrack();
+    });
 
-
-    albumWrapper.addEventListener(
-      "click",
-      function () {
-
-        togglePlay();
-
-      }
-    );
-
-
-    document
-      .getElementById("nextBtn")
-      .addEventListener(
-        "click",
-        function () {
-
-          if (playerReady) {
-            nextTrack();
-          }
-
-        }
-      );
-
-
-    document
-      .getElementById("prevBtn")
-      .addEventListener(
-        "click",
-        function () {
-
-          if (playerReady) {
-            prevTrack();
-          }
-
-        }
-      );
-
+    document.getElementById("prevBtn").addEventListener("click", function () {
+      if (playerReady) prevTrack();
+    });
 
     /* =========================
        KEYBOARD
     ========================= */
 
-    document.addEventListener(
-      "keydown",
-      function (event) {
-
-        /*
-          Space = Play/Pause
-        */
-
-        if (
-          event.code ===
-          "Space"
-        ) {
-
-          event.preventDefault();
-
-          togglePlay();
-
-        }
-
-
-        /*
-          Right Arrow = Next
-        */
-
-        else if (
-          event.code ===
-          "ArrowRight"
-        ) {
-
-          event.preventDefault();
-
-          if (playerReady) {
-            nextTrack();
-          }
-
-        }
-
-
-        /*
-          Left Arrow = Previous
-        */
-
-        else if (
-          event.code ===
-          "ArrowLeft"
-        ) {
-
-          event.preventDefault();
-
-          if (playerReady) {
-            prevTrack();
-          }
-
-        }
-
+    document.addEventListener("keydown", function (event) {
+      if (event.code === "Space") {
+        event.preventDefault();
+        togglePlay();
+      } else if (event.code === "ArrowRight") {
+        event.preventDefault();
+        if (playerReady) nextTrack();
+      } else if (event.code === "ArrowLeft") {
+        event.preventDefault();
+        if (playerReady) prevTrack();
       }
-    );
-
+    });
 
     /* =========================
        CLEANUP
     ========================= */
 
-    window.addEventListener(
-      "beforeunload",
-      function () {
-
-        if (progressTimer) {
-
-          clearInterval(
-            progressTimer
-          );
-
-        }
-
-      }
-    );
-
+    window.addEventListener("beforeunload", function () {
+      if (progressTimer) clearInterval(progressTimer);
+    });
   </script>
 
-
   <!-- Bootstrap JS -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
+
