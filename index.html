@@ -4171,8 +4171,10 @@ function updateIndiaTime() {
       hour12: true
     }).format(new Date());
 
-  timeElement.textContent =
-    indiaTime;
+ timeElement.innerHTML = `
+    <span class="time-main">${parts[0]}</span>
+    <span class="time-period">${parts[1]}</span>
+  `;
 }
 
 /* Immediately show time */
