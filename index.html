@@ -135,6 +135,181 @@
 /* =========================================================
    BUS SEAT SHAKE EFFECTS
 ========================================================= */
+    ======================== */
+
+.seat-selector {
+  position: relative;
+  z-index: 50;
+}
+
+/* Dropdown circular button */
+
+.seat-dropdown-btn {
+  width: 58px;
+  height: 58px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+
+  background: rgba(15, 15, 15, 0.58);
+  color: #fff;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.seat-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: scale(1.06);
+}
+
+.seat-dropdown-btn:active {
+  transform: scale(0.92);
+}
+
+.seat-dropdown-btn i:first-child {
+  font-size: 1.35rem;
+}
+
+.seat-arrow {
+  font-size: 0.75rem !important;
+  transition: transform 0.2s ease;
+}
+
+/* Arrow rotate when menu open */
+
+.seat-selector.open .seat-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* =========================
+   SEAT MENU
+========================= */
+
+.seat-menu {
+  position: absolute;
+
+  left: 68px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+
+  width: 170px;
+
+  padding: 7px;
+
+  background: rgba(15, 15, 15, 0.82);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0.2s ease;
+}
+
+
+/* Open menu */
+
+.seat-selector.open .seat-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateY(-50%) translateX(0);
+}
+
+
+/* =========================
+   SEAT OPTIONS
+========================= */
+
+.seat-option {
+  width: 100%;
+
+  border: none;
+  border-radius: 11px;
+
+  background: transparent;
+  color: #fff;
+
+  padding: 10px 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition: all 0.15s ease;
+}
+
+.seat-option i {
+  width: 20px;
+
+  font-size: 1rem;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.seat-option:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.seat-option:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .seat-dropdown-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .seat-menu {
+    left: 60px;
+    width: 155px;
+  }
+
+}
+
 /* =========================================================
    BUS SEAT SHAKE EFFECT
    10 SEC REST → 2 SEC SHAKE → REPEAT
