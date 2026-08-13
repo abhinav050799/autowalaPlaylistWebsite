@@ -4171,16 +4171,16 @@ function updateIndiaTime() {
       hour12: true
     }).format(new Date());
 
- timeElement.innerHTML = `
+  const parts = indiaTime.split(" ");
+
+  timeElement.innerHTML = `
     <span class="time-main">${parts[0]}</span>
     <span class="time-period">${parts[1]}</span>
   `;
 }
 
-/* Immediately show time */
 updateIndiaTime();
 
-/* Update every second */
 setInterval(
   updateIndiaTime,
   1000
