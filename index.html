@@ -2061,6 +2061,9 @@ body {
   ========================= -->
 
   <div class="top-bar">
+     <div id="indiaTime" class="india-time">
+    12:00 AM
+  </div>
 
     <div class="top-bar-center">
 
@@ -4140,6 +4143,36 @@ document.addEventListener(
   }
 );
 
+  </script>
+  <script>
+    
+function updateIndiaTime() {
+
+  const timeElement =
+    document.getElementById("indiaTime");
+
+  if (!timeElement) return;
+
+  const indiaTime =
+    new Intl.DateTimeFormat("en-IN", {
+      timeZone: "Asia/Kolkata",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    }).format(new Date());
+
+  timeElement.textContent =
+    indiaTime;
+}
+
+/* Immediately show time */
+updateIndiaTime();
+
+/* Update every second */
+setInterval(
+  updateIndiaTime,
+  1000
+);
   </script>
   <!-- Bootstrap JS -->
 
