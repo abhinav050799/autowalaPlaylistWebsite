@@ -135,349 +135,289 @@
 /* =========================================================
    BUS SEAT SHAKE EFFECTS
 ========================================================= */
+/* =========================================================
+   BUS SEAT SHAKE EFFECT
+   10 SEC REST → 2 SEC SHAKE → REPEAT
+========================================================= */
 
-/* FRONT SEAT
-   Halki realistic left/right movement
-*/
+/* ---------------------------------------------------------
+   FRONT SEAT
+--------------------------------------------------------- */
+
 body.seat-front .saloon-bg,
 body.seat-front .logo-container,
 body.seat-front .top-bar,
 body.seat-front .left-sound-buttons {
 
-  animation:
-    frontBusShake 0.65s ease-in-out infinite;
+    animation: frontBusShake 12s ease-in-out infinite;
 }
 
 
-/* MID SEAT
-   Left/right zyada,
-   up/down halka
-*/
+/* ---------------------------------------------------------
+   MID SEAT
+--------------------------------------------------------- */
+
 body.seat-mid .saloon-bg,
 body.seat-mid .logo-container,
 body.seat-mid .top-bar,
 body.seat-mid .left-sound-buttons {
 
-  animation:
-    midBusShake 0.48s ease-in-out infinite;
+    animation: midBusShake 12s ease-in-out infinite;
 }
 
 
-/* LAST SEAT
-   Sabse zyada movement.
-   Lekin violent nahi.
-*/
+/* ---------------------------------------------------------
+   LAST SEAT
+--------------------------------------------------------- */
+
 body.seat-last .saloon-bg,
 body.seat-last .logo-container,
 body.seat-last .top-bar,
 body.seat-last .left-sound-buttons {
 
-  animation:
-    lastBusShake 0.38s ease-in-out infinite;
-}
-
-
-/* =========================
-   FRONT SHAKE
-========================= */
-
-@keyframes frontBusShake {
-
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  20% {
-    transform: translate3d(-1.5px, 0.5px, 0);
-  }
-
-  40% {
-    transform: translate3d(2px, -0.5px, 0);
-  }
-
-  60% {
-    transform: translate3d(-2px, 0.5px, 0);
-  }
-
-  80% {
-    transform: translate3d(1.5px, -0.3px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-
-/* =========================
-   MID SHAKE
-========================= */
-
-@keyframes midBusShake {
-
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  15% {
-    transform: translate3d(-4px, 1px, 0);
-  }
-
-  30% {
-    transform: translate3d(5px, -1px, 0);
-  }
-
-  45% {
-    transform: translate3d(-5px, 1.5px, 0);
-  }
-
-  60% {
-    transform: translate3d(4px, -1px, 0);
-  }
-
-  75% {
-    transform: translate3d(-3px, 1px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-
-/* =========================
-   LAST SEAT SHAKE
-========================= */
-
-@keyframes lastBusShake {
-
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-
-  12% {
-    transform: translate3d(-6px, 2px, 0)
-               rotate(-0.25deg);
-  }
-
-  25% {
-    transform: translate3d(7px, -3px, 0)
-               rotate(0.3deg);
-  }
-
-  38% {
-    transform: translate3d(-8px, 4px, 0)
-               rotate(-0.35deg);
-  }
-
-  50% {
-    transform: translate3d(6px, -2px, 0)
-               rotate(0.25deg);
-  }
-
-  63% {
-    transform: translate3d(-6px, 3px, 0)
-               rotate(-0.2deg);
-  }
-
-  76% {
-    transform: translate3d(5px, -2px, 0)
-               rotate(0.2deg);
-  }
-
-  88% {
-    transform: translate3d(-3px, 1px, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0)
-               rotate(0deg);
-  }
+    animation: lastBusShake 12s ease-in-out infinite;
 }
 
 
 /* =========================================================
-   SEAT DROPDOWN
+   FRONT SEAT
+   0-10 sec = REST
+   10-12 sec = SHAKE
 ========================================================= */
 
-.seat-selector {
-  position: relative;
-  display: flex;
-  justify-content: center;
+@keyframes frontBusShake {
+
+    /* 0 - 10 sec : STATIC */
+
+    0%,
+    83% {
+
+        transform: translate3d(0, 0, 0);
+    }
+
+
+    /* SHAKE START */
+
+    85% {
+
+        transform: translate3d(-1px, 0.5px, 0);
+    }
+
+    86.5% {
+
+        transform: translate3d(1.5px, -0.5px, 0);
+    }
+
+    88% {
+
+        transform: translate3d(-2px, 1px, 0);
+    }
+
+    89.5% {
+
+        transform: translate3d(1px, -1px, 0);
+    }
+
+    91% {
+
+        transform: translate3d(-1.5px, 0.5px, 0);
+    }
+
+    92.5% {
+
+        transform: translate3d(2px, 0, 0);
+    }
+
+    94% {
+
+        transform: translate3d(-1px, -0.5px, 0);
+    }
+
+    95.5% {
+
+        transform: translate3d(1px, 1px, 0);
+    }
+
+    97% {
+
+        transform: translate3d(-0.5px, -0.5px, 0);
+    }
+
+    /* SHAKE END */
+
+    100% {
+
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 
-/* Main dropdown button */
+/* =========================================================
+   MID SEAT
+   Slightly stronger
+========================================================= */
 
-.seat-dropdown-btn {
-  width: 58px;
-  height: 42px;
+@keyframes midBusShake {
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 22px;
+    /* REST */
 
-  background: rgba(15, 15, 15, 0.58);
-  color: #fff;
+    0%,
+    83% {
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.seat-dropdown-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  transform: scale(1.05);
-}
-
-.seat-dropdown-btn:active {
-  transform: scale(0.94);
-}
-
-.seat-dropdown-btn i {
-  font-size: 1rem;
-}
-
-.seat-dropdown-btn .seat-arrow {
-  font-size: 0.65rem;
-  transition: transform 0.25s ease;
-}
-
-.seat-selector.open .seat-arrow {
-  transform: rotate(180deg);
-}
+        transform: translate3d(0, 0, 0);
+    }
 
 
-/* Dropdown menu */
+    /* SHAKE */
 
-.seat-menu {
-  position: absolute;
+    85% {
 
-  left: 68px;
-  top: 50%;
-  transform:
-    translateY(-50%)
-    translateX(-8px)
-    scale(0.95);
+        transform: translate3d(-3px, 1px, 0);
+    }
 
-  transform-origin: left center;
+    86.5% {
 
-  min-width: 145px;
+        transform: translate3d(4px, -1px, 0);
+    }
 
-  padding: 7px;
+    88% {
 
-  background: rgba(12, 12, 12, 0.78);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
+        transform: translate3d(-5px, 2px, 0);
+    }
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
+    89.5% {
 
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: translate3d(3px, -2px, 0);
+    }
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+    91% {
 
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease,
-    visibility 0.22s ease;
+        transform: translate3d(-4px, 1px, 0);
+    }
+
+    92.5% {
+
+        transform: translate3d(5px, 0, 0);
+    }
+
+    94% {
+
+        transform: translate3d(-3px, -1px, 0);
+    }
+
+    95.5% {
+
+        transform: translate3d(2px, 2px, 0);
+    }
+
+    97% {
+
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    /* END */
+
+    100% {
+
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 
-.seat-selector.open .seat-menu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+/* =========================================================
+   LAST SEAT
+   Strongest movement
+========================================================= */
 
-  transform:
-    translateY(-50%)
-    translateX(0)
-    scale(1);
+@keyframes lastBusShake {
+
+    /* REST */
+
+    0%,
+    83% {
+
+        transform:
+            translate3d(0, 0, 0)
+            rotate(0deg);
+    }
+
+
+    /* SHAKE */
+
+    85% {
+
+        transform:
+            translate3d(-5px, 2px, 0)
+            rotate(-0.15deg);
+    }
+
+    86.5% {
+
+        transform:
+            translate3d(6px, -2px, 0)
+            rotate(0.18deg);
+    }
+
+    88% {
+
+        transform:
+            translate3d(-7px, 3px, 0)
+            rotate(-0.22deg);
+    }
+
+    89.5% {
+
+        transform:
+            translate3d(5px, -3px, 0)
+            rotate(0.20deg);
+    }
+
+    91% {
+
+        transform:
+            translate3d(-6px, 2px, 0)
+            rotate(-0.18deg);
+    }
+
+    92.5% {
+
+        transform:
+            translate3d(7px, -1px, 0)
+            rotate(0.15deg);
+    }
+
+    94% {
+
+        transform:
+            translate3d(-5px, -2px, 0)
+            rotate(-0.12deg);
+    }
+
+    95.5% {
+
+        transform:
+            translate3d(3px, 2px, 0)
+            rotate(0.10deg);
+    }
+
+    97% {
+
+        transform:
+            translate3d(-2px, 0, 0)
+            rotate(-0.05deg);
+    }
+
+
+    /* BACK TO NORMAL */
+
+    100% {
+
+        transform:
+            translate3d(0, 0, 0)
+            rotate(0deg);
+    }
 }
 
-
-/* Individual seat option */
-
-.seat-option {
-  width: 100%;
-
-  border: none;
-  border-radius: 11px;
-
-  background: transparent;
-  color: rgba(255, 255, 255, 0.9);
-
-  padding: 9px 11px;
-
-  display: flex;
-  align-items: center;
-  gap: 9px;
-
-  font-size: 0.76rem;
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition:
-    background 0.18s ease,
-    transform 0.18s ease,
-    color 0.18s ease;
-}
-
-.seat-option:hover {
-  background: rgba(255, 255, 255, 0.13);
-  color: #fff;
-  transform: translateX(2px);
-}
-
-.seat-option i {
-  width: 18px;
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-
-/* Selected seat */
-
-.seat-option.active {
-  background: rgba(255, 255, 255, 0.16);
-  color: #fff;
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-  .seat-dropdown-btn {
-    width: 50px;
-    height: 38px;
-  }
-
-  .seat-menu {
-    left: 60px;
-    min-width: 135px;
-  }
-
-}
     /* =========================
        LINKS
     ========================= */
