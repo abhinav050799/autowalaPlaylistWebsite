@@ -56,6 +56,11 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      transition:
+    background-image 0.5s ease,
+    background-position 0.4s ease;
+
+  will-change: transform;
     }
 
     .saloon-bg::after {
@@ -127,7 +132,352 @@
         transform: scale(0.95);
       }
     }
+/* =========================================================
+   BUS SEAT SHAKE EFFECTS
+========================================================= */
 
+/* FRONT SEAT
+   Halki realistic left/right movement
+*/
+body.seat-front .saloon-bg,
+body.seat-front .logo-container,
+body.seat-front .top-bar,
+body.seat-front .left-sound-buttons {
+
+  animation:
+    frontBusShake 0.65s ease-in-out infinite;
+}
+
+
+/* MID SEAT
+   Left/right zyada,
+   up/down halka
+*/
+body.seat-mid .saloon-bg,
+body.seat-mid .logo-container,
+body.seat-mid .top-bar,
+body.seat-mid .left-sound-buttons {
+
+  animation:
+    midBusShake 0.48s ease-in-out infinite;
+}
+
+
+/* LAST SEAT
+   Sabse zyada movement.
+   Lekin violent nahi.
+*/
+body.seat-last .saloon-bg,
+body.seat-last .logo-container,
+body.seat-last .top-bar,
+body.seat-last .left-sound-buttons {
+
+  animation:
+    lastBusShake 0.38s ease-in-out infinite;
+}
+
+
+/* =========================
+   FRONT SHAKE
+========================= */
+
+@keyframes frontBusShake {
+
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  20% {
+    transform: translate3d(-1.5px, 0.5px, 0);
+  }
+
+  40% {
+    transform: translate3d(2px, -0.5px, 0);
+  }
+
+  60% {
+    transform: translate3d(-2px, 0.5px, 0);
+  }
+
+  80% {
+    transform: translate3d(1.5px, -0.3px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* =========================
+   MID SHAKE
+========================= */
+
+@keyframes midBusShake {
+
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-4px, 1px, 0);
+  }
+
+  30% {
+    transform: translate3d(5px, -1px, 0);
+  }
+
+  45% {
+    transform: translate3d(-5px, 1.5px, 0);
+  }
+
+  60% {
+    transform: translate3d(4px, -1px, 0);
+  }
+
+  75% {
+    transform: translate3d(-3px, 1px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+/* =========================
+   LAST SEAT SHAKE
+========================= */
+
+@keyframes lastBusShake {
+
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  12% {
+    transform: translate3d(-6px, 2px, 0)
+               rotate(-0.25deg);
+  }
+
+  25% {
+    transform: translate3d(7px, -3px, 0)
+               rotate(0.3deg);
+  }
+
+  38% {
+    transform: translate3d(-8px, 4px, 0)
+               rotate(-0.35deg);
+  }
+
+  50% {
+    transform: translate3d(6px, -2px, 0)
+               rotate(0.25deg);
+  }
+
+  63% {
+    transform: translate3d(-6px, 3px, 0)
+               rotate(-0.2deg);
+  }
+
+  76% {
+    transform: translate3d(5px, -2px, 0)
+               rotate(0.2deg);
+  }
+
+  88% {
+    transform: translate3d(-3px, 1px, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0)
+               rotate(0deg);
+  }
+}
+
+
+/* =========================================================
+   SEAT DROPDOWN
+========================================================= */
+
+.seat-selector {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Main dropdown button */
+
+.seat-dropdown-btn {
+  width: 58px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+
+  background: rgba(15, 15, 15, 0.58);
+  color: #fff;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.seat-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: scale(1.05);
+}
+
+.seat-dropdown-btn:active {
+  transform: scale(0.94);
+}
+
+.seat-dropdown-btn i {
+  font-size: 1rem;
+}
+
+.seat-dropdown-btn .seat-arrow {
+  font-size: 0.65rem;
+  transition: transform 0.25s ease;
+}
+
+.seat-selector.open .seat-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* Dropdown menu */
+
+.seat-menu {
+  position: absolute;
+
+  left: 68px;
+  top: 50%;
+  transform:
+    translateY(-50%)
+    translateX(-8px)
+    scale(0.95);
+
+  transform-origin: left center;
+
+  min-width: 145px;
+
+  padding: 7px;
+
+  background: rgba(12, 12, 12, 0.78);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    visibility 0.22s ease;
+}
+
+
+.seat-selector.open .seat-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform:
+    translateY(-50%)
+    translateX(0)
+    scale(1);
+}
+
+
+/* Individual seat option */
+
+.seat-option {
+  width: 100%;
+
+  border: none;
+  border-radius: 11px;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+
+  padding: 9px 11px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 0.76rem;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    color 0.18s ease;
+}
+
+.seat-option:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.seat-option i {
+  width: 18px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+
+/* Selected seat */
+
+.seat-option.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .seat-dropdown-btn {
+    width: 50px;
+    height: 38px;
+  }
+
+  .seat-menu {
+    left: 60px;
+    min-width: 135px;
+  }
+
+}
     /* =========================
        LINKS
     ========================= */
