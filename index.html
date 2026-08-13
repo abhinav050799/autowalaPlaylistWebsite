@@ -211,7 +211,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     /* =========================
@@ -736,6 +736,89 @@
       <i class="bi bi-music-note-beamed"></i>
 
     </button>
+<!-- =========================
+     SEAT SELECTOR
+========================= -->
+
+<div class="seat-selector" id="seatSelector">
+
+  <!-- DROPDOWN BUTTON -->
+
+  <button
+    id="seatDropdownBtn"
+    class="seat-dropdown-btn"
+    type="button"
+    aria-label="Choose Bus Seat"
+    title="Choose Seat"
+  >
+
+    <i class="bi bi-bus-front"></i>
+
+    <i class="bi bi-chevron-down seat-arrow"></i>
+
+  </button>
+
+
+  <!-- DROPDOWN MENU -->
+
+  <div
+    class="seat-menu"
+    id="seatMenu"
+  >
+
+    <!-- FRONT -->
+
+    <button
+      class="seat-option"
+      type="button"
+      data-seat="front"
+    >
+
+      <i class="bi bi-person-fill"></i>
+
+      <span>
+        Front Seat
+      </span>
+
+    </button>
+
+
+    <!-- MID -->
+
+    <button
+      class="seat-option"
+      type="button"
+      data-seat="mid"
+    >
+
+      <i class="bi bi-people-fill"></i>
+
+      <span>
+        Mid Seat
+      </span>
+
+    </button>
+
+
+    <!-- LAST -->
+
+    <button
+      class="seat-option"
+      type="button"
+      data-seat="last"
+    >
+
+      <i class="bi bi-person-lines-fill"></i>
+
+      <span>
+        Last Seat
+      </span>
+
+    </button>
+
+  </div>
+
+</div>
 
 
   </div>
@@ -2319,6 +2402,213 @@
 
 
 </script>
+  <script>
+    /* =========================================================
+   BUS SEAT SELECTOR
+========================================================= */
+
+const seatSelector =
+  document.getElementById("seatSelector");
+
+const seatDropdownBtn =
+  document.getElementById("seatDropdownBtn");
+
+const seatOptions =
+  document.querySelectorAll(".seat-option");
+
+
+/* =========================================================
+   SEAT IMAGES
+========================================================= */
+
+const seatImages = {
+
+  front:
+    "https://abhinav050799.github.io/autowalaPlaylistWebsite/image/fontseat.jpg",
+
+  mid:
+    "https://abhinav050799.github.io/autowalaPlaylistWebsite/image/midseat.jpg",
+
+  last:
+    "https://abhinav050799.github.io/autowalaPlaylistWebsite/image/lastseat.jpg"
+
+};
+
+
+/* =========================================================
+   OPEN / CLOSE DROPDOWN
+========================================================= */
+
+seatDropdownBtn.addEventListener(
+  "click",
+  function (event) {
+
+    event.stopPropagation();
+
+    seatSelector.classList.toggle(
+      "open"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   SELECT SEAT
+========================================================= */
+
+seatOptions.forEach(
+  function (option) {
+
+    option.addEventListener(
+      "click",
+      function (event) {
+
+        event.stopPropagation();
+
+        const seat =
+          this.dataset.seat;
+
+        changeBusSeat(
+          seat
+        );
+
+        seatSelector.classList.remove(
+          "open"
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   CHANGE BUS SEAT
+========================================================= */
+
+function changeBusSeat(seat) {
+
+  if (
+    !seatImages[seat]
+  ) {
+    return;
+  }
+
+
+  /* =========================
+     REMOVE OLD EFFECT
+  ========================= */
+
+  document.body.classList.remove(
+    "seat-front",
+    "seat-mid",
+    "seat-last"
+  );
+
+
+  /* =========================
+     CHANGE BACKGROUND
+  ========================= */
+
+  const bg =
+    document.querySelector(
+      ".saloon-bg"
+    );
+
+  if (bg) {
+
+    bg.style.backgroundImage =
+      `url("${seatImages[seat]}")`;
+
+  }
+
+
+  /* =========================
+     ADD NEW EFFECT
+  ========================= */
+
+  if (seat === "front") {
+
+    document.body.classList.add(
+      "seat-front"
+    );
+
+  }
+
+  else if (seat === "mid") {
+
+    document.body.classList.add(
+      "seat-mid"
+    );
+
+  }
+
+  else if (seat === "last") {
+
+    document.body.classList.add(
+      "seat-last"
+    );
+
+  }
+
+
+  /* =========================
+     ACTIVE BUTTON
+  ========================= */
+
+  seatOptions.forEach(
+    function (option) {
+
+      option.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+
+  const selectedOption =
+    document.querySelector(
+      `.seat-option[data-seat="${seat}"]`
+    );
+
+  if (selectedOption) {
+
+    selectedOption.classList.add(
+      "active"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CLOSE DROPDOWN WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+  "click",
+  function (event) {
+
+    if (
+      !seatSelector.contains(
+        event.target
+      )
+    ) {
+
+      seatSelector.classList.remove(
+        "open"
+      );
+
+    }
+
+  }
+);
+
+  </script>
   <!-- Bootstrap JS -->
 
   <script
