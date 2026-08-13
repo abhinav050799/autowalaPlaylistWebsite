@@ -2081,17 +2081,14 @@ body {
 
     <div class="top-bar-center">
 
-      <div class="online-badge">
+     <div class="online-badge">
+  <span class="online-dot"></span>
+  <span id="onlineCount">0</span>
+  <span style="opacity:0.6;">
+    online
+  </span>
+</div>
 
-        <span class="online-dot"></span>
-
-        <span>27</span>
-
-        <span style="opacity:0.6;">
-          online
-        </span>
-
-      </div>
 
     </div>
 
@@ -4190,6 +4187,28 @@ setInterval(
   1000
 );
   </script>
+ <script src="https://github.com/abhinav050799/autowalaPlaylistWebsite/blob/main/socketHandler.js"></script>
+
+<script>
+  const socket = io("https://my-autowala-server.onrender.com");
+
+  socket.on("online_count", (count) => {
+    const onlineCount = document.getElementById("onlineCount");
+
+    if (onlineCount) {
+      onlineCount.textContent = count;
+    }
+  });
+
+  socket.on("connect", () => {
+    console.log("Connected:", socket.id);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Disconnected");
+  });
+</script>
+ 
   <!-- Bootstrap JS -->
 
   <script
