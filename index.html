@@ -1088,6 +1088,7 @@
     ========================================================= */
 
   
+
   let player = null;
   let playerReady = false;
 
@@ -1300,6 +1301,7 @@
         videoId: song.id,
         startSeconds: 0
       });
+
     }
   }
 
@@ -1368,6 +1370,7 @@
     } else {
 
       playMusic();
+
     }
   }
 
@@ -1446,9 +1449,9 @@
       );
 
 
-      /* =========================
+      /* =====================================================
          MAIN PLAYER
-      ========================= */
+      ===================================================== */
 
       player =
         new YT.Player(
@@ -1480,22 +1483,23 @@
 
               onError:
                 onPlayerError
+
             }
 
           }
         );
 
 
-      /* =========================
+      /* =====================================================
          HORN PLAYER
-      ========================= */
+      ===================================================== */
 
       createHornPlayer();
 
 
-      /* =========================
+      /* =====================================================
          BODI GALI PLAYER
-      ========================= */
+      ===================================================== */
 
       createBodiGaliPlayer();
 
@@ -1989,10 +1993,18 @@
      HORN BUTTON
      
      BEHAVIOR:
-     - Horn playing → pause Horn
-     - Horn not playing → pause main music
-       ONLY if main music is currently playing
-     - Main music already paused → remains paused
+     
+     1. Horn playing
+        → Horn pause
+
+     2. Main music playing
+        → Main music pause
+
+     3. Bodi Gali playing
+        → Bodi Gali pause
+
+     4. Horn
+        → Start from beginning
   ========================================================= */
 
   hornBtn.addEventListener(
@@ -2012,9 +2024,10 @@
         hornPlayer.getPlayerState();
 
 
-      /* =========================
+      /* =====================================================
          HORN ALREADY PLAYING
-      ========================= */
+         → ONLY PAUSE HORN
+      ===================================================== */
 
       if (
         state ===
@@ -2027,11 +2040,10 @@
       }
 
 
-      /* =========================
-         PAUSE MAIN MUSIC
-         
-         ONLY IF IT IS PLAYING
-      ========================= */
+      /* =====================================================
+         MAIN MUSIC PLAYING
+         → PAUSE MAIN MUSIC
+      ===================================================== */
 
       if (
         playerReady &&
@@ -2045,9 +2057,26 @@
       }
 
 
-      /* =========================
-         PLAY HORN
-      ========================= */
+      /* =====================================================
+         BODI GALI PLAYING
+         → PAUSE BODI GALI
+      ===================================================== */
+
+      if (
+        bodiGaliPlayerReady &&
+        bodiGaliPlayer &&
+        bodiGaliPlayer.getPlayerState() ===
+          YT.PlayerState.PLAYING
+      ) {
+
+        bodiGaliPlayer.pauseVideo();
+
+      }
+
+
+      /* =====================================================
+         START HORN
+      ===================================================== */
 
       hornPlayer.seekTo(
         0,
@@ -2193,10 +2222,18 @@
      BODI GALI BUTTON
      
      BEHAVIOR:
-     - Bodi Gali playing → pause Bodi Gali
-     - Bodi Gali not playing → pause main music
-       ONLY if main music is currently playing
-     - Main music already paused → remains paused
+     
+     1. Bodi Gali playing
+        → Bodi Gali pause
+
+     2. Main music playing
+        → Main music pause
+
+     3. Horn playing
+        → Horn pause
+
+     4. Bodi Gali
+        → Start from beginning
   ========================================================= */
 
   bodiGaliBtn.addEventListener(
@@ -2216,9 +2253,10 @@
         bodiGaliPlayer.getPlayerState();
 
 
-      /* =========================
+      /* =====================================================
          BODI GALI ALREADY PLAYING
-      ========================= */
+         → ONLY PAUSE BODI GALI
+      ===================================================== */
 
       if (
         state ===
@@ -2231,11 +2269,10 @@
       }
 
 
-      /* =========================
-         PAUSE MAIN MUSIC
-         
-         ONLY IF IT IS PLAYING
-      ========================= */
+      /* =====================================================
+         MAIN MUSIC PLAYING
+         → PAUSE MAIN MUSIC
+      ===================================================== */
 
       if (
         playerReady &&
@@ -2249,9 +2286,26 @@
       }
 
 
-      /* =========================
-         PLAY BODI GALI
-      ========================= */
+      /* =====================================================
+         HORN PLAYING
+         → PAUSE HORN
+      ===================================================== */
+
+      if (
+        hornPlayerReady &&
+        hornPlayer &&
+        hornPlayer.getPlayerState() ===
+          YT.PlayerState.PLAYING
+      ) {
+
+        hornPlayer.pauseVideo();
+
+      }
+
+
+      /* =====================================================
+         START BODI GALI
+      ===================================================== */
 
       bodiGaliPlayer.seekTo(
         0,
@@ -2262,6 +2316,7 @@
 
     }
   );
+
 
 </script>
   <!-- Bootstrap JS -->
