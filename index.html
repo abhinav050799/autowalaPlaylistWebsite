@@ -116,10 +116,12 @@
         opacity: 0.6;
         transform: scale(0.95);
       }
+
       50% {
         opacity: 1;
         transform: scale(1.2);
       }
+
       100% {
         opacity: 0.6;
         transform: scale(0.95);
@@ -194,6 +196,141 @@
     }
 
     /* =========================
+       HORN YOUTUBE PLAYER
+    ========================= */
+
+    #horn-youtube-player {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* =========================
+       LEFT SIDE SOUND BUTTONS
+    ========================= */
+
+    .left-sound-buttons {
+      position: fixed;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* =========================
+       BUS HORN BUTTON
+    ========================= */
+
+    .horn-btn {
+      width: 58px;
+      height: 58px;
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+
+      background: rgba(15, 15, 15, 0.58);
+      color: #ffffff;
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    .horn-btn i {
+      font-size: 1.5rem;
+    }
+
+    .horn-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: scale(1.06);
+    }
+
+    .horn-btn:active {
+      transform: scale(0.92);
+    }
+
+    .horn-btn.playing {
+      background: rgba(255, 255, 255, 0.2);
+
+      box-shadow:
+        0 0 0 5px rgba(255, 255, 255, 0.05),
+        0 0 25px rgba(255, 255, 255, 0.25);
+    }
+
+    /* =========================
+       BODI GALI BUTTON
+    ========================= */
+
+    .bodi-gali-btn {
+      min-width: 58px;
+      min-height: 42px;
+
+      padding: 7px 9px;
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 15px;
+
+      background: rgba(15, 15, 15, 0.58);
+      color: #ffffff;
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      text-decoration: none;
+
+      font-size: 0.65rem;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+
+      transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .bodi-gali-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .bodi-gali-btn:active {
+      transform: scale(0.94);
+    }
+
+    /* =========================
        FLOATING PLAYER
     ========================= */
 
@@ -245,8 +382,13 @@
     }
 
     @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .play-pause-center {
@@ -465,6 +607,29 @@
         width: 52px;
         height: 52px;
       }
+
+      /* LEFT BUTTONS MOBILE */
+
+      .left-sound-buttons {
+        left: 0.7rem;
+        top: 50%;
+      }
+
+      .horn-btn {
+        width: 50px;
+        height: 50px;
+      }
+
+      .horn-btn i {
+        font-size: 1.25rem;
+      }
+
+      .bodi-gali-btn {
+        min-width: 50px;
+        min-height: 38px;
+        font-size: 0.58rem;
+        border-radius: 12px;
+      }
     }
   </style>
 </head>
@@ -512,15 +677,73 @@
   <!-- LOGO (HINDI TYPOGRAPHY SVG) -->
   <div class="logo-container">
     <h1>
-      <svg class="saloon-hindi-svg" viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="120" text-anchor="middle" fill="#FFFFFF" font-family="'Inter', 'Noto Sans Devanagari', sans-serif" font-weight="900" font-size="105" letter-spacing="2">डीलक्स</text>
-        <text x="50%" y="260" text-anchor="middle" fill="#FFFFFF" font-family="'Inter', 'Noto Sans Devanagari', sans-serif" font-weight="900" font-size="115" letter-spacing="2">सैलून</text>
+      <svg
+        class="saloon-hindi-svg"
+        viewBox="0 0 600 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <text
+          x="50%"
+          y="120"
+          text-anchor="middle"
+          fill="#FFFFFF"
+          font-family="'Inter', 'Noto Sans Devanagari', sans-serif"
+          font-weight="900"
+          font-size="105"
+          letter-spacing="2"
+        >डीलक्स</text>
+
+        <text
+          x="50%"
+          y="260"
+          text-anchor="middle"
+          fill="#FFFFFF"
+          font-family="'Inter', 'Noto Sans Devanagari', sans-serif"
+          font-weight="900"
+          font-size="115"
+          letter-spacing="2"
+        >सैलून</text>
       </svg>
     </h1>
   </div>
 
-  <!-- HIDDEN YOUTUBE PLAYER -->
+  <!-- HIDDEN MAIN YOUTUBE PLAYER -->
   <div id="youtube-player"></div>
+
+  <!-- HIDDEN HORN YOUTUBE PLAYER -->
+  <div id="horn-youtube-player"></div>
+
+  <!-- =========================
+       LEFT SIDE BUTTONS
+  ========================= -->
+
+  <div class="left-sound-buttons">
+
+    <!-- BUS HORN -->
+    <button
+      id="hornBtn"
+      class="horn-btn"
+      type="button"
+      aria-label="Bus Horn"
+      title="Bus Horn"
+    >
+      <i class="bi bi-bus-front-fill"></i>
+    </button>
+
+    <!-- BODI GALI -->
+    <a
+      href="https://www.youtube.com/watch?v=VMPeaoG2fIc"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bodi-gali-btn"
+      aria-label="Bodi Gali"
+      title="Bodi Gali"
+    >
+      BODI<br>GALI
+    </a>
+
+  </div>
 
   <!-- FLOATING PLAYER -->
   <div class="player-wrapper">
@@ -538,6 +761,7 @@
           src="https://i.ytimg.com/vi/oq5Ocx_rEv8/hqdefault.jpg"
           alt="Album Art"
         >
+
         <div class="play-pause-center">
           <i id="overlayIcon" class="bi bi-play-fill"></i>
         </div>
@@ -548,6 +772,7 @@
         <div id="trackTitle" class="track-title">
           Kal Ho Naa Ho
         </div>
+
         <div id="trackArtist" class="track-artist">
           Sonu Nigam
         </div>
@@ -555,15 +780,24 @@
         <!-- PROGRESS -->
         <div class="progress-row">
           <span id="currentTime" class="time-label">0:00</span>
-          <div id="progressContainer" class="progress-custom">
-            <div id="progressFill" class="progress-fill"></div>
+
+          <div
+            id="progressContainer"
+            class="progress-custom"
+          >
+            <div
+              id="progressFill"
+              class="progress-fill"
+            ></div>
           </div>
+
           <span id="durationTime" class="time-label">0:00</span>
         </div>
       </div>
 
       <!-- CONTROLS -->
       <div class="player-controls d-flex align-items-center gap-1">
+
         <button
           id="prevBtn"
           class="ctrl-btn"
@@ -581,7 +815,10 @@
           aria-label="Play"
           title="Play"
         >
-          <i id="playIcon" class="bi bi-play-fill"></i>
+          <i
+            id="playIcon"
+            class="bi bi-play-fill"
+          ></i>
         </button>
 
         <button
@@ -593,14 +830,21 @@
         >
           <i class="bi bi-skip-forward-fill"></i>
         </button>
+
       </div>
 
     </div>
 
     <!-- STATUS -->
     <div class="player-status">
-      <span id="statusDot" class="status-dot"></span>
-      <span id="statusText">Press Play to start music</span>
+      <span
+        id="statusDot"
+        class="status-dot"
+      ></span>
+
+      <span id="statusText">
+        Press Play to start music
+      </span>
     </div>
 
     <!-- FOOTER -->
@@ -610,8 +854,9 @@
   </div>
 
   <!-- =========================
-        YOUTUBE IFRAME API
+       YOUTUBE IFRAME API
   ========================= -->
+
   <script src="https://www.youtube.com/iframe_api"></script>
 
   <script>
@@ -621,206 +866,207 @@
     ============================================================
     */
 
-const playlist = [
-  // =========================
-  // MANGLESH DANGWAL
-  // =========================
+    const playlist = [
 
-  {
-    id: "AD0aph3hWXE",
-    title: "Gorakhyon Ki Ranjha",
-    artist: "Manglesh Dangwal",
-    cover: "https://i.ytimg.com/vi/AD0aph3hWXE/hqdefault.jpg"
-  },
+      // =========================
+      // MANGLESH DANGWAL
+      // =========================
 
-  {
-    id: "wO9w8JFD9Fo",
-    title: "Negi Ki Cheli",
-    artist: "Manglesh Dangwal",
-    cover: "https://i.ytimg.com/vi/wO9w8JFD9Fo/hqdefault.jpg"
-  },
+      {
+        id: "AD0aph3hWXE",
+        title: "Gorakhyon Ki Ranjha",
+        artist: "Manglesh Dangwal",
+        cover: "https://i.ytimg.com/vi/AD0aph3hWXE/hqdefault.jpg"
+      },
 
-  // =========================
-  // NARENDRA SINGH NEGI
-  // =========================
+      {
+        id: "wO9w8JFD9Fo",
+        title: "Negi Ki Cheli",
+        artist: "Manglesh Dangwal",
+        cover: "https://i.ytimg.com/vi/wO9w8JFD9Fo/hqdefault.jpg"
+      },
 
-  {
-    id: "OyNnQI1bCzg",
-    title: "Chali Bhai Motar Chali",
-    artist: "Narendra Singh Negi & Meena Rana",
-    cover: "https://i.ytimg.com/vi/OyNnQI1bCzg/hqdefault.jpg"
-  },
+      // =========================
+      // NARENDRA SINGH NEGI
+      // =========================
 
-  // =========================
-  // GAJENDRA RANA
-  // =========================
+      {
+        id: "OyNnQI1bCzg",
+        title: "Chali Bhai Motar Chali",
+        artist: "Narendra Singh Negi & Meena Rana",
+        cover: "https://i.ytimg.com/vi/OyNnQI1bCzg/hqdefault.jpg"
+      },
 
-  {
-    id: "JvjEM78D9Nw",
-    title: "Bhaiji Ku Byo",
-    artist: "Gajendra Rana",
-    cover: "https://i.ytimg.com/vi/JvjEM78D9Nw/hqdefault.jpg"
-  },
+      // =========================
+      // GAJENDRA RANA
+      // =========================
 
-  // =========================
-  // KUMAONI
-  // =========================
+      {
+        id: "JvjEM78D9Nw",
+        title: "Bhaiji Ku Byo",
+        artist: "Gajendra Rana",
+        cover: "https://i.ytimg.com/vi/JvjEM78D9Nw/hqdefault.jpg"
+      },
 
-  {
-    id: "ijN3PK7j6PQ",
-    title: "Thal Ki Bazar",
-    artist: "B.K. Samant",
-    cover: "https://i.ytimg.com/vi/ijN3PK7j6PQ/hqdefault.jpg"
-  },
+      // =========================
+      // KUMAONI
+      // =========================
 
-  {
-    id: "43MGWGyzBlM",
-    title: "Basanti Chori",
-    artist: "Pappu Karki",
-    cover: "https://i.ytimg.com/vi/43MGWGyzBlM/hqdefault.jpg"
-  },
+      {
+        id: "ijN3PK7j6PQ",
+        title: "Thal Ki Bazar",
+        artist: "B.K. Samant",
+        cover: "https://i.ytimg.com/vi/ijN3PK7j6PQ/hqdefault.jpg"
+      },
 
-  {
-    id: "bDK657bDfKc",
-    title: "Bedu Pako",
-    artist: "Priyanka Negi",
-    cover: "https://i.ytimg.com/vi/bDK657bDfKc/hqdefault.jpg"
-  },
-  {
-  id: "07v0XAWTzSs",
-  title: "Naya Zamana Chhoro",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/07v0XAWTzSs/hqdefault.jpg"
-},
+      {
+        id: "43MGWGyzBlM",
+        title: "Basanti Chori",
+        artist: "Pappu Karki",
+        cover: "https://i.ytimg.com/vi/43MGWGyzBlM/hqdefault.jpg"
+      },
 
-{
-  id: "4EWctb1la5k",
-  title: "Daam Ki Khatir",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/4EWctb1la5k/hqdefault.jpg"
-},
+      {
+        id: "bDK657bDfKc",
+        title: "Bedu Pako",
+        artist: "Priyanka Negi",
+        cover: "https://i.ytimg.com/vi/bDK657bDfKc/hqdefault.jpg"
+      },
 
-{
-  id: "FY04dqXRTk0",
-  title: "Chullu Jagandi Bagat Aayi",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/FY04dqXRTk0/hqdefault.jpg"
-},
+      {
+        id: "07v0XAWTzSs",
+        title: "Naya Zamana Chhoro",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/07v0XAWTzSs/hqdefault.jpg"
+      },
 
-{
-  id: "JnLqkI-88Qo",
-  title: "Thando Re Thando",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/JnLqkI-88Qo/hqdefault.jpg"
-},
+      {
+        id: "4EWctb1la5k",
+        title: "Daam Ki Khatir",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/4EWctb1la5k/hqdefault.jpg"
+      },
 
-{
-  id: "arQyHGC2kRA",
-  title: "Otuwa Balen",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/arQyHGC2kRA/hqdefault.jpg"
-},
+      {
+        id: "FY04dqXRTk0",
+        title: "Chullu Jagandi Bagat Aayi",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/FY04dqXRTk0/hqdefault.jpg"
+      },
 
-{
-  id: "nfOIXNjot4c",
-  title: "Maachhi Pani Si",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/nfOIXNjot4c/hqdefault.jpg"
-},
+      {
+        id: "JnLqkI-88Qo",
+        title: "Thando Re Thando",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/JnLqkI-88Qo/hqdefault.jpg"
+      },
 
-{
-  id: "05nX9yZg-Dw",
-  title: "Mor Moriki Maand Pelaya",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/05nX9yZg-Dw/hqdefault.jpg"
-},
+      {
+        id: "arQyHGC2kRA",
+        title: "Otuwa Balen",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/arQyHGC2kRA/hqdefault.jpg"
+      },
 
-{
-  id: "Q2Ffw9e1rzQ",
-  title: "Khojyali Min Khojyali",
-  artist: "Narendra Singh Negi & Anuradha Nirala",
-  cover: "https://i.ytimg.com/vi/Q2Ffw9e1rzQ/hqdefault.jpg"
-},
+      {
+        id: "nfOIXNjot4c",
+        title: "Maachhi Pani Si",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/nfOIXNjot4c/hqdefault.jpg"
+      },
 
-{
-  id: "Lu1rCVj1zWY",
-  title: "Nat Roop Ch Na Rang",
-  artist: "Narendra Singh Negi & Purnima",
-  cover: "https://i.ytimg.com/vi/Lu1rCVj1zWY/hqdefault.jpg"
-},
+      {
+        id: "05nX9yZg-Dw",
+        title: "Mor Moriki Maand Pelaya",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/05nX9yZg-Dw/hqdefault.jpg"
+      },
 
-{
-  id: "YSy8U_jjsMk",
-  title: "Nauchami Naraina",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/YSy8U_jjsMk/hqdefault.jpg"
-},
+      {
+        id: "Q2Ffw9e1rzQ",
+        title: "Khojyali Min Khojyali",
+        artist: "Narendra Singh Negi & Anuradha Nirala",
+        cover: "https://i.ytimg.com/vi/Q2Ffw9e1rzQ/hqdefault.jpg"
+      },
 
-{
-  id: "371GFgXCN3k",
-  title: "Surma Sarela",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/371GFgXCN3k/hqdefault.jpg"
-},
+      {
+        id: "Lu1rCVj1zWY",
+        title: "Nat Roop Ch Na Rang",
+        artist: "Narendra Singh Negi & Purnima",
+        cover: "https://i.ytimg.com/vi/Lu1rCVj1zWY/hqdefault.jpg"
+      },
 
-{
-  id: "OyNnQI1bCzg",
-  title: "Chali Bhai Motar Chali",
-  artist: "Narendra Singh Negi & Meena Rana",
-  cover: "https://i.ytimg.com/vi/OyNnQI1bCzg/hqdefault.jpg"
-},
+      {
+        id: "YSy8U_jjsMk",
+        title: "Nauchami Naraina",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/YSy8U_jjsMk/hqdefault.jpg"
+      },
 
-{
-  id: "JvjEM78D9Nw",
-  title: "Bhaiji Ku Byo",
-  artist: "Gajendra Rana",
-  cover: "https://i.ytimg.com/vi/JvjEM78D9Nw/hqdefault.jpg"
-},
+      {
+        id: "371GFgXCN3k",
+        title: "Surma Sarela",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/371GFgXCN3k/hqdefault.jpg"
+      },
 
-{
-  id: "tF75jVaQ8bc",
-  title: "Rani Gorkyani",
-  artist: "Gajendra Rana",
-  cover: "https://i.ytimg.com/vi/tF75jVaQ8bc/hqdefault.jpg"
-},
+      {
+        id: "OyNnQI1bCzg",
+        title: "Chali Bhai Motar Chali",
+        artist: "Narendra Singh Negi & Meena Rana",
+        cover: "https://i.ytimg.com/vi/OyNnQI1bCzg/hqdefault.jpg"
+      },
 
-{
-  id: "wO9w8JFD9Fo",
-  title: "Negi Ki Cheli",
-  artist: "Manglesh Dangwal",
-  cover: "https://i.ytimg.com/vi/wO9w8JFD9Fo/hqdefault.jpg"
-},
+      {
+        id: "JvjEM78D9Nw",
+        title: "Bhaiji Ku Byo",
+        artist: "Gajendra Rana",
+        cover: "https://i.ytimg.com/vi/JvjEM78D9Nw/hqdefault.jpg"
+      },
 
-{
-  id: "AD0aph3hWXE",
-  title: "Gorakhyon Ki Ranjha",
-  artist: "Manglesh Dangwal",
-  cover: "https://i.ytimg.com/vi/AD0aph3hWXE/hqdefault.jpg"
-},
+      {
+        id: "tF75jVaQ8bc",
+        title: "Rani Gorkyani",
+        artist: "Gajendra Rana",
+        cover: "https://i.ytimg.com/vi/tF75jVaQ8bc/hqdefault.jpg"
+      },
 
-{
-  id: "SvX4RllK0TY",
-  title: "O Saiyya Meri Kashmira",
-  artist: "Manglesh Dangwal & Meena Rana",
-  cover: "https://i.ytimg.com/vi/SvX4RllK0TY/hqdefault.jpg"
-},
+      {
+        id: "wO9w8JFD9Fo",
+        title: "Negi Ki Cheli",
+        artist: "Manglesh Dangwal",
+        cover: "https://i.ytimg.com/vi/wO9w8JFD9Fo/hqdefault.jpg"
+      },
 
-{
-  id: "yZhHg2Fe5aE",
-  title: "Rajula",
-  artist: "Pritam Bhartwan & Meena Rana",
-  cover: "https://i.ytimg.com/vi/yZhHg2Fe5aE/hqdefault.jpg"
-},
+      {
+        id: "AD0aph3hWXE",
+        title: "Gorakhyon Ki Ranjha",
+        artist: "Manglesh Dangwal",
+        cover: "https://i.ytimg.com/vi/AD0aph3hWXE/hqdefault.jpg"
+      },
 
-{
-  id: "n553q_G0gus",
-  title: "Teri Peeda Ma Dui Aansu",
-  artist: "Narendra Singh Negi",
-  cover: "https://i.ytimg.com/vi/n553q_G0gus/hqdefault.jpg"
-}
+      {
+        id: "SvX4RllK0TY",
+        title: "O Saiyya Meri Kashmira",
+        artist: "Manglesh Dangwal & Meena Rana",
+        cover: "https://i.ytimg.com/vi/SvX4RllK0TY/hqdefault.jpg"
+      },
 
-];
+      {
+        id: "yZhHg2Fe5aE",
+        title: "Rajula",
+        artist: "Pritam Bhartwan & Meena Rana",
+        cover: "https://i.ytimg.com/vi/yZhHg2Fe5aE/hqdefault.jpg"
+      },
 
+      {
+        id: "n553q_G0gus",
+        title: "Teri Peeda Ma Dui Aansu",
+        artist: "Narendra Singh Negi",
+        cover: "https://i.ytimg.com/vi/n553q_G0gus/hqdefault.jpg"
+      }
+
+    ];
 
 
     /* =========================
@@ -833,6 +1079,7 @@ const playlist = [
     let isPlaying = false;
     let userStarted = false;
     let progressTimer = null;
+
 
     /* =========================
        DOM
@@ -852,6 +1099,7 @@ const playlist = [
     const statusText = document.getElementById("statusText");
     const statusDot = document.getElementById("statusDot");
 
+
     /* =========================
        FORMAT TIME
     ========================= */
@@ -860,10 +1108,13 @@ const playlist = [
       if (!seconds || isNaN(seconds) || seconds < 0) {
         return "0:00";
       }
+
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
+
       return mins + ":" + String(secs).padStart(2, "0");
     }
+
 
     /* =========================
        UPDATE UI
@@ -871,291 +1122,696 @@ const playlist = [
 
     function updatePlayButton(playing) {
       isPlaying = playing;
+
       if (playing) {
+
         playIcon.className = "bi bi-pause-fill";
         overlayIcon.className = "bi bi-pause-fill";
+
         albumArt.style.animationPlayState = "running";
+
         statusDot.classList.add("playing");
+
         statusText.textContent = "Now playing";
+
       } else {
+
         playIcon.className = "bi bi-play-fill";
         overlayIcon.className = "bi bi-play-fill";
+
         albumArt.style.animationPlayState = "paused";
+
         statusDot.classList.remove("playing");
+
         statusText.textContent = "Paused";
       }
     }
+
 
     /* =========================
        LOAD TRACK UI
     ========================= */
 
     function updateTrackUI(index) {
+
       const song = playlist[index];
+
       if (!song) return;
 
       trackTitle.textContent = song.title;
       trackArtist.textContent = song.artist;
+
       albumArt.src = song.cover;
+
       currentTime.textContent = "0:00";
       durationTime.textContent = "0:00";
+
       progressFill.style.width = "0%";
     }
+
 
     /* =========================
        LOAD SONG
     ========================= */
 
     function loadTrack(index, autoPlay = false) {
+
       if (!playerReady || !player) return;
+
       if (index < 0 || index >= playlist.length) return;
 
       currentIndex = index;
+
       const song = playlist[currentIndex];
 
       updateTrackUI(currentIndex);
+
       statusText.textContent = "Loading " + song.title + "...";
 
       if (autoPlay) {
-        player.loadVideoById({ videoId: song.id, startSeconds: 0 });
+
+        player.loadVideoById({
+          videoId: song.id,
+          startSeconds: 0
+        });
+
       } else {
-        player.cueVideoById({ videoId: song.id, startSeconds: 0 });
+
+        player.cueVideoById({
+          videoId: song.id,
+          startSeconds: 0
+        });
+
       }
     }
+
 
     /* =========================
        PLAY
     ========================= */
 
     function playMusic() {
+
       if (!playerReady || !player) {
-        statusText.textContent = "YouTube player loading...";
+
+        statusText.textContent =
+          "YouTube player loading...";
+
         return;
       }
+
       userStarted = true;
+
       player.playVideo();
-      statusText.textContent = "Starting music...";
+
+      statusText.textContent =
+        "Starting music...";
     }
+
 
     /* =========================
        PAUSE
     ========================= */
 
     function pauseMusic() {
+
       if (!playerReady || !player) return;
+
       player.pauseVideo();
     }
+
 
     /* =========================
        TOGGLE
     ========================= */
 
     function togglePlay() {
+
       if (!playerReady) {
-        statusText.textContent = "YouTube player loading...";
+
+        statusText.textContent =
+          "YouTube player loading...";
+
         return;
       }
+
       if (isPlaying) {
+
         pauseMusic();
+
       } else {
+
         playMusic();
       }
     }
+
 
     /* =========================
        NEXT TRACK
     ========================= */
 
     function nextTrack() {
-      currentIndex = (currentIndex + 1) % playlist.length;
+
+      currentIndex =
+        (currentIndex + 1) % playlist.length;
+
       updateTrackUI(currentIndex);
 
       const song = playlist[currentIndex];
-      statusText.textContent = "Loading next song...";
 
-      player.loadVideoById({ videoId: song.id, startSeconds: 0 });
+      statusText.textContent =
+        "Loading next song...";
+
+      player.loadVideoById({
+        videoId: song.id,
+        startSeconds: 0
+      });
+
       userStarted = true;
     }
+
 
     /* =========================
        PREVIOUS TRACK
     ========================= */
 
     function prevTrack() {
-      currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+
+      currentIndex =
+        (currentIndex - 1 + playlist.length) %
+        playlist.length;
+
       updateTrackUI(currentIndex);
 
       const song = playlist[currentIndex];
-      statusText.textContent = "Loading previous song...";
 
-      player.loadVideoById({ videoId: song.id, startSeconds: 0 });
+      statusText.textContent =
+        "Loading previous song...";
+
+      player.loadVideoById({
+        videoId: song.id,
+        startSeconds: 0
+      });
+
       userStarted = true;
     }
+
 
     /* =========================
        YOUTUBE API READY
     ========================= */
 
     window.onYouTubeIframeAPIReady = function () {
+
       console.log("YouTube API Ready");
-      player = new YT.Player("youtube-player", {
-        width: "1",
-        height: "1",
-        videoId: playlist[0].id,
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          rel: 0,
-          playsinline: 1,
-          modestbranding: 1,
-          iv_load_policy: 3
-        },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange,
-          onError: onPlayerError
+
+
+      /* =========================
+         MAIN MUSIC PLAYER
+      ========================= */
+
+      player = new YT.Player(
+        "youtube-player",
+        {
+
+          width: "1",
+          height: "1",
+
+          videoId: playlist[0].id,
+
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            rel: 0,
+            playsinline: 1,
+            modestbranding: 1,
+            iv_load_policy: 3
+          },
+
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+            onError: onPlayerError
+          }
         }
-      });
+      );
+
+
+      /* =========================
+         BUS HORN PLAYER
+      ========================= */
+
+      createHornPlayer();
     };
+
 
     /* =========================
        PLAYER READY
     ========================= */
 
     function onPlayerReady(event) {
+
       console.log("YouTube Player Ready");
+
       playerReady = true;
 
       updateTrackUI(currentIndex);
-      statusText.textContent = "Press Play to start music";
 
-      progressTimer = setInterval(updateProgress, 500);
+      statusText.textContent =
+        "Press Play to start music";
+
+      progressTimer =
+        setInterval(updateProgress, 500);
     }
+
 
     /* =========================
        PLAYER STATE
     ========================= */
 
     function onPlayerStateChange(event) {
+
       const state = event.data;
+
       console.log("YouTube state:", state);
 
+
       if (state === YT.PlayerState.PLAYING) {
+
         updatePlayButton(true);
+
       } else if (state === YT.PlayerState.PAUSED) {
+
         updatePlayButton(false);
+
       } else if (state === YT.PlayerState.BUFFERING) {
-        statusText.textContent = "Buffering...";
+
+        statusText.textContent =
+          "Buffering...";
+
       } else if (state === YT.PlayerState.ENDED) {
+
         updatePlayButton(false);
+
         setTimeout(function () {
+
           nextTrack();
+
         }, 300);
       }
     }
+
 
     /* =========================
        YOUTUBE ERROR
     ========================= */
 
     function onPlayerError(event) {
-      console.error("YouTube Error:", event.data);
-      statusText.textContent = "This track cannot play. Trying next...";
+
+      console.error(
+        "YouTube Error:",
+        event.data
+      );
+
+      statusText.textContent =
+        "This track cannot play. Trying next...";
 
       setTimeout(function () {
+
         nextTrack();
+
       }, 1000);
     }
+
 
     /* =========================
        PROGRESS
     ========================= */
 
     function updateProgress() {
+
       if (!playerReady || !player) return;
 
       try {
-        const current = player.getCurrentTime();
-        const duration = player.getDuration();
+
+        const current =
+          player.getCurrentTime();
+
+        const duration =
+          player.getDuration();
 
         if (duration && duration > 0) {
-          const percent = (current / duration) * 100;
-          progressFill.style.width = Math.min(100, percent) + "%";
-          currentTime.textContent = formatTime(current);
-          durationTime.textContent = formatTime(duration);
+
+          const percent =
+            (current / duration) * 100;
+
+          progressFill.style.width =
+            Math.min(100, percent) + "%";
+
+          currentTime.textContent =
+            formatTime(current);
+
+          durationTime.textContent =
+            formatTime(duration);
         }
+
       } catch (error) {
-        console.log("Progress error", error);
+
+        console.log(
+          "Progress error",
+          error
+        );
       }
     }
+
 
     /* =========================
        SEEK
     ========================= */
 
-    progressContainer.addEventListener("click", function (event) {
-      if (!playerReady || !player) return;
+    progressContainer.addEventListener(
+      "click",
+      function (event) {
 
-      const rect = this.getBoundingClientRect();
-      const clickX = event.clientX - rect.left;
-      const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+        if (!playerReady || !player) return;
 
-      const duration = player.getDuration();
+        const rect =
+          this.getBoundingClientRect();
 
-      if (duration && duration > 0) {
-        player.seekTo(percentage * duration, true);
+        const clickX =
+          event.clientX - rect.left;
+
+        const percentage =
+          Math.max(
+            0,
+            Math.min(
+              1,
+              clickX / rect.width
+            )
+          );
+
+        const duration =
+          player.getDuration();
+
+        if (duration && duration > 0) {
+
+          player.seekTo(
+            percentage * duration,
+            true
+          );
+        }
       }
-    });
+    );
+
 
     /* =========================
        BUTTON EVENTS
     ========================= */
 
-    playBtn.addEventListener("click", function () {
-      togglePlay();
-    });
+    playBtn.addEventListener(
+      "click",
+      function () {
 
-    albumWrapper.addEventListener("click", function () {
-      togglePlay();
-    });
+        togglePlay();
 
-    document.getElementById("nextBtn").addEventListener("click", function () {
-      if (playerReady) nextTrack();
-    });
+      }
+    );
 
-    document.getElementById("prevBtn").addEventListener("click", function () {
-      if (playerReady) prevTrack();
-    });
+
+    albumWrapper.addEventListener(
+      "click",
+      function () {
+
+        togglePlay();
+
+      }
+    );
+
+
+    document
+      .getElementById("nextBtn")
+      .addEventListener(
+        "click",
+        function () {
+
+          if (playerReady) {
+            nextTrack();
+          }
+
+        }
+      );
+
+
+    document
+      .getElementById("prevBtn")
+      .addEventListener(
+        "click",
+        function () {
+
+          if (playerReady) {
+            prevTrack();
+          }
+
+        }
+      );
+
 
     /* =========================
        KEYBOARD
     ========================= */
 
-    document.addEventListener("keydown", function (event) {
-      if (event.code === "Space") {
-        event.preventDefault();
-        togglePlay();
-      } else if (event.code === "ArrowRight") {
-        event.preventDefault();
-        if (playerReady) nextTrack();
-      } else if (event.code === "ArrowLeft") {
-        event.preventDefault();
-        if (playerReady) prevTrack();
+    document.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (event.code === "Space") {
+
+          event.preventDefault();
+
+          togglePlay();
+
+        } else if (
+          event.code === "ArrowRight"
+        ) {
+
+          event.preventDefault();
+
+          if (playerReady) {
+            nextTrack();
+          }
+
+        } else if (
+          event.code === "ArrowLeft"
+        ) {
+
+          event.preventDefault();
+
+          if (playerReady) {
+            prevTrack();
+          }
+        }
       }
-    });
+    );
+
 
     /* =========================
        CLEANUP
     ========================= */
 
-    window.addEventListener("beforeunload", function () {
-      if (progressTimer) clearInterval(progressTimer);
-    });
+    window.addEventListener(
+      "beforeunload",
+      function () {
+
+        if (progressTimer) {
+          clearInterval(progressTimer);
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       BUS HORN
+    ========================================================= */
+
+    let hornPlayer = null;
+    let hornPlayerReady = false;
+
+    const hornBtn =
+      document.getElementById("hornBtn");
+
+
+    /* =========================
+       CREATE HORN PLAYER
+    ========================= */
+
+    function createHornPlayer() {
+
+      hornPlayer =
+        new YT.Player(
+          "horn-youtube-player",
+          {
+
+            width: "1",
+            height: "1",
+
+            /*
+              Bus horn YouTube Shorts video
+            */
+
+            videoId: "S3CfBvhzvsc",
+
+            playerVars: {
+              autoplay: 0,
+              controls: 0,
+              rel: 0,
+              playsinline: 1,
+              modestbranding: 1,
+              iv_load_policy: 3
+            },
+
+            events: {
+
+              onReady:
+                onHornPlayerReady,
+
+              onStateChange:
+                onHornPlayerStateChange,
+
+              onError:
+                onHornPlayerError
+            }
+          }
+        );
+    }
+
+
+    /* =========================
+       HORN PLAYER READY
+    ========================= */
+
+    function onHornPlayerReady() {
+
+      console.log(
+        "Horn Player Ready"
+      );
+
+      hornPlayerReady = true;
+    }
+
+
+    /* =========================
+       HORN STATE
+    ========================= */
+
+    function onHornPlayerStateChange(event) {
+
+      if (
+        event.data ===
+        YT.PlayerState.PLAYING
+      ) {
+
+        hornBtn.classList.add(
+          "playing"
+        );
+
+      }
+
+
+      if (
+        event.data ===
+        YT.PlayerState.PAUSED ||
+        event.data ===
+        YT.PlayerState.ENDED
+      ) {
+
+        hornBtn.classList.remove(
+          "playing"
+        );
+      }
+    }
+
+
+    /* =========================
+       HORN ERROR
+    ========================= */
+
+    function onHornPlayerError(event) {
+
+      console.error(
+        "Horn YouTube Error:",
+        event.data
+      );
+
+      hornBtn.classList.remove(
+        "playing"
+      );
+    }
+
+
+    /* =========================
+       HORN BUTTON CLICK
+    ========================= */
+
+    hornBtn.addEventListener(
+      "click",
+      function () {
+
+        /*
+          Agar YouTube horn player
+          abhi ready nahi hai
+        */
+
+        if (
+          !hornPlayerReady ||
+          !hornPlayer
+        ) {
+
+          return;
+        }
+
+
+        const state =
+          hornPlayer.getPlayerState();
+
+
+        /*
+          Agar horn already baj raha hai
+          to pause
+        */
+
+        if (
+          state ===
+          YT.PlayerState.PLAYING
+        ) {
+
+          hornPlayer.pauseVideo();
+
+          return;
+        }
+
+
+        /*
+          Har click par horn
+          beginning se chalega
+        */
+
+        hornPlayer.seekTo(
+          0,
+          true
+        );
+
+        hornPlayer.playVideo();
+      }
+    );
+
   </script>
 
+
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  ></script>
 
 </body>
 </html>
-
