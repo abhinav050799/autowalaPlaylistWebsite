@@ -1046,479 +1046,108 @@ body.seat-last .left-sound-buttons {
       }
     }
     /* new css  */
-    /* =========================================================
-   FINAL RESPONSIVE OVERRIDE
+  /* =========================================================
+   FINAL RESPONSIVE OVERRIDE - LATEST
    ---------------------------------------------------------
-   Existing CSS ko change nahi karta.
-   Sirf responsive issues ko override karta hai.
+   Existing CSS ko touch nahi karta.
+   Sirf responsive behavior override karta hai.
 ========================================================= */
 
 
 /* =========================================================
-   GLOBAL SAFETY
+   GLOBAL
 ========================================================= */
 
 html,
 body {
     width: 100%;
     min-width: 0;
-    max-width: 100%;
     overflow-x: hidden;
-}
-
-* {
-    max-width: 100%;
 }
 
 
 /* =========================================================
-   BACKGROUND IMAGE
+   BACKGROUND
    ---------------------------------------------------------
-   IMPORTANT:
-   Portrait devices par image crop na ho.
+   Background FIXED rahega.
+   Original desktop/mobile cover behavior maintain.
 ========================================================= */
 
 .saloon-bg {
+    position: fixed !important;
+    inset: 0 !important;
+
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     min-height: 100dvh;
 
     background-repeat: no-repeat;
 
-    /*
-       Default desktop:
-       image screen ko cover karegi
+    /* IMPORTANT:
+       contain REMOVE kiya hai.
+       Original cover hi rahega.
     */
-    background-size: cover;
-    background-position: center center;
+    background-size: cover !important;
+    background-position: center center !important;
 }
 
 
 /* =========================================================
-   TABLET + IPAD PORTRAIT
-   601px - 1024px
+   PHONE PORTRAIT
+   ---------------------------------------------------------
+   Yahan background contain NAHI hai.
+   Original cover use hoga.
 ========================================================= */
 
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (max-width: 600px) and (orientation: portrait) {
 
-    .saloon-bg {
-
-        /*
-           Tablet portrait mein image ko
-           poora visible rakhne ke liye
-        */
-        background-size: contain;
-        background-position: center center;
-        background-color: #090909;
-    }
-
-
-    .logo-container {
-
-        margin-top: 10vh;
-
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-
-
-    .saloon-hindi-svg {
-
-        width: min(70vw, 560px);
-
-        max-width: 560px;
-    }
-
-
-    .top-bar {
-
-        left: 1.5rem;
-        right: 1.5rem;
-    }
-
-
-    .left-sound-buttons {
-
-        left: 1rem;
-
-        gap: 10px;
-    }
-
-
-    .sound-btn {
-
-        width: 54px;
-        height: 54px;
-    }
-
-
-    .seat-dropdown-btn {
-
-        width: 54px;
-        height: 54px;
-    }
-
-
-    /*
-       Tablet player
-    */
-
-    .player-wrapper {
-
-        width: calc(100% - 3rem);
-
-        max-width: 720px;
-
-        bottom: 1.5rem;
-    }
-
-
-    .player-glass {
-
-        padding: 0.65rem 0.8rem;
-
-        gap: 0.7rem;
-    }
-}
-
-
-/* =========================================================
-   TABLET + IPAD PORTRAIT
-   specifically taller portrait screens
-========================================================= */
-
-@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
-
-    .saloon-bg {
-
-        background-size: contain;
-
-        background-position: center center;
-    }
-
-
-    .logo-container {
-
-        margin-top: 12vh;
-    }
-
-
-    .saloon-hindi-svg {
-
-        width: 72vw;
-
-        max-width: 580px;
-    }
-
-
-    .player-wrapper {
-
-        bottom: 1.4rem;
-
-        width: calc(100% - 2rem);
-
-        max-width: 760px;
-    }
-}
-
-
-/* =========================================================
-   MOBILE DEVICES
-   ALL PHONES
-========================================================= */
-
-@media (max-width: 600px) {
-
-    html,
     body {
-
-        width: 100%;
-
-        min-width: 0;
-
-        overflow-x: hidden;
+        /*
+           Thoda vertical space allow karega
+           jisse user halka scroll kar sake.
+        */
+        min-height: 115vh;
+        overflow-y: auto;
     }
 
 
-    /*
-       IMPORTANT
-
-       Mobile portrait mein full background image.
-    */
-
     .saloon-bg {
+        position: fixed !important;
 
         width: 100%;
-
         height: 100dvh;
 
-        min-height: 100dvh;
-
-        background-size: contain;
-
-        background-position: center center;
-
-        background-repeat: no-repeat;
-
-        background-color: #090909;
+        background-size: cover !important;
+        background-position: center center !important;
     }
 
 
-    /* =====================================================
-       TOP BAR
-    ===================================================== */
-
-    .top-bar {
-
-        position: relative;
-
-        top: auto;
-        left: auto;
-        right: auto;
-
-        width: 100%;
-
-        padding:
-            max(10px, env(safe-area-inset-top))
-            10px
-            0;
-
-        margin: 0;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 8px;
-
-        z-index: 100;
-    }
-
-
-    .top-bar-center {
-
-        position: static;
-
-        transform: none;
-
-        order: -1;
-
-        width: auto;
-
-        flex-shrink: 0;
-
-        display: flex;
-
-        justify-content: center;
-    }
-
-
-    .online-badge {
-
-        padding: 0.3rem 0.65rem;
-
-        font-size: 0.7rem;
-
-        gap: 0.35rem;
-    }
-
-
-    .online-dot {
-
-        width: 7px;
-
-        height: 7px;
-    }
-
-
-    .top-bar > .d-flex {
-
-        min-width: 0;
-
-        flex-shrink: 1;
-
-        gap: 5px !important;
-    }
-
-
-    .pill-link {
-
-        padding: 0.3rem 0.6rem;
-
-        font-size: 0.7rem;
-
-        gap: 0.25rem;
-
-        white-space: nowrap;
-    }
-
-
-    .pill-link i {
-
-        font-size: 0.9rem;
-    }
-
-
-    /* =====================================================
+    /* -----------------------------------------
        LOGO
-    ===================================================== */
+    ----------------------------------------- */
 
     .logo-container {
-
         margin-top: 4vh;
-
-        width: 100%;
-
-        padding:
-            0
-            0.7rem;
-
-        overflow: visible;
+        padding-bottom: 180px;
     }
 
 
     .saloon-hindi-svg {
-
         width: min(88vw, 460px);
-
         max-width: 100%;
-
         height: auto;
     }
 
 
-    /* =====================================================
-       LEFT BUTTON AREA
-
-       IMPORTANT:
-       Seat selector ko player se upar overlap
-       hone se bachayenge.
-    ===================================================== */
-
-    .left-sound-buttons {
-
-        position: fixed;
-
-        left: 0.55rem;
-
-        top: 50%;
-
-        transform: translateY(-50%);
-
-        z-index: 80;
-
-        gap: 7px;
-
-        max-height: 45vh;
-    }
-
-
-    .sound-btn {
-
-        width: 48px;
-
-        height: 48px;
-
-        flex-shrink: 0;
-    }
-
-
-    .sound-btn i {
-
-        font-size: 1.15rem;
-    }
-
-
-    .bodi-gali-btn i {
-
-        font-size: 1.1rem;
-    }
-
-
-    /* =====================================================
-       SEAT BUTTON
-    ===================================================== */
-
-    .seat-selector {
-
-        position: relative;
-
-        z-index: 100;
-    }
-
-
-    .seat-dropdown-btn {
-
-        width: 48px;
-
-        height: 48px;
-
-        flex-shrink: 0;
-    }
-
-
-    .seat-dropdown-btn i:first-child {
-
-        font-size: 1.15rem;
-    }
-
-
-    .seat-arrow {
-
-        font-size: 0.65rem !important;
-    }
-
-
-    /* =====================================================
-       SEAT MENU
-    ===================================================== */
-
-    .seat-menu {
-
-        left: 57px;
-
-        width: 145px;
-
-        max-width: calc(100vw - 70px);
-
-        padding: 6px;
-
-        border-radius: 14px;
-
-        z-index: 200;
-    }
-
-
-    .seat-option {
-
-        padding: 9px 10px;
-
-        font-size: 0.72rem;
-
-        gap: 8px;
-    }
-
-
-    .seat-option i {
-
-        width: 17px;
-
-        font-size: 0.9rem;
-    }
-
-
-    /* =====================================================
-       MUSIC PLAYER
-    ===================================================== */
+    /* -----------------------------------------
+       PLAYER
+       Normal fixed bottom player
+    ----------------------------------------- */
 
     .player-wrapper {
-
-        position: fixed;
+        position: fixed !important;
 
         left: 50%;
-
         bottom: max(
             0.7rem,
             env(safe-area-inset-bottom)
@@ -1528,332 +1157,36 @@ body {
 
         width: calc(100% - 1rem);
 
-        max-width: none;
-
-        z-index: 60;
-    }
-
-
-    .player-glass {
-
-        width: 100%;
-
-        min-width: 0;
-
-        border-radius: 24px;
-
-        padding: 7px 9px;
-
-        gap: 8px;
-
-        display: flex;
-
-        align-items: center;
-
-        flex-wrap: nowrap;
-
-        overflow: hidden;
-    }
-
-
-    /* =====================================================
-       ALBUM
-    ===================================================== */
-
-    .album-wrapper {
-
-        width: 48px;
-
-        height: 48px;
-
-        min-width: 48px;
-
-        flex: 0 0 48px;
-    }
-
-
-    .album-art {
-
-        width: 48px;
-
-        height: 48px;
-    }
-
-
-    .play-pause-center {
-
-        width: 21px;
-
-        height: 21px;
-    }
-
-
-    .play-pause-center i {
-
-        font-size: 10px;
-    }
-
-
-    /* =====================================================
-       TRACK INFO
-    ===================================================== */
-
-    .track-info {
-
-        min-width: 0;
-
-        flex: 1 1 auto;
-
-        width: auto;
-
-        overflow: hidden;
-    }
-
-
-    .track-title {
-
-        font-size: 0.76rem;
-
-        line-height: 1.15;
-
-        white-space: nowrap;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-    }
-
-
-    .track-artist {
-
-        font-size: 0.62rem;
-
-        line-height: 1.15;
-
-        margin-top: 2px;
-
-        white-space: nowrap;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-    }
-
-
-    /* =====================================================
-       PROGRESS
-    ===================================================== */
-
-    .progress-row {
-
-        gap: 5px;
-
-        margin-top: 4px;
-
-        min-width: 0;
-    }
-
-
-    .time-label {
-
-        font-size: 0.55rem;
-
-        min-width: 23px;
-    }
-
-
-    .progress-custom {
-
-        min-width: 20px;
-
-        height: 3px;
-    }
-
-
-    /* =====================================================
-       PLAYER CONTROLS
-    ===================================================== */
-
-    .player-controls {
-
-        width: auto !important;
-
-        flex: 0 0 auto;
-
-        display: flex !important;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 0 !important;
-
-        margin-top: 0 !important;
-    }
-
-
-    .ctrl-btn {
-
-        width: 30px;
-
-        height: 30px;
-
-        flex-shrink: 0;
-
-        font-size: 0.82rem;
-    }
-
-
-    .play-btn {
-
-        width: 36px;
-
-        height: 36px;
-
-        font-size: 1rem;
-    }
-
-
-    /* =====================================================
-       STATUS
-    ===================================================== */
-
-    .player-status {
-
-        margin-top: 5px;
-
-        font-size: 0.58rem;
-    }
-
-
-    .footer-text {
-
-        margin-top: 3px;
-
-        font-size: 0.52rem;
-
-        padding: 0 10px;
-
-        white-space: nowrap;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
+        z-index: 100;
     }
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES
-   iPhone 5 / SE OLD / 320px WIDTH
+   VERY SMALL PHONE PORTRAIT
+   iPhone 5 / 320px etc.
 ========================================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 360px) and (orientation: portrait) {
 
-    .top-bar {
-
-        padding-left: 6px;
-
-        padding-right: 6px;
-
-        gap: 5px;
-    }
-
-
-    .online-badge {
-
-        padding: 0.25rem 0.5rem;
-
-        font-size: 0.62rem;
-    }
-
-
-    .pill-link {
-
-        padding: 0.25rem 0.45rem;
-
-        font-size: 0.62rem;
-    }
-
-
-    .pill-link i {
-
-        font-size: 0.75rem;
+    body {
+        min-height: 118vh;
     }
 
 
     .logo-container {
-
         margin-top: 2vh;
-
-        padding-left: 0.3rem;
-
-        padding-right: 0.3rem;
+        padding-bottom: 170px;
     }
 
 
     .saloon-hindi-svg {
-
         width: 91vw;
-    }
-
-
-    .left-sound-buttons {
-
-        left: 0.35rem;
-
-        gap: 5px;
-    }
-
-
-    .sound-btn {
-
-        width: 43px;
-
-        height: 43px;
-    }
-
-
-    .sound-btn i {
-
-        font-size: 1rem;
-    }
-
-
-    .seat-dropdown-btn {
-
-        width: 43px;
-
-        height: 43px;
-    }
-
-
-    .seat-dropdown-btn i:first-child {
-
-        font-size: 1rem;
-    }
-
-
-    .seat-menu {
-
-        left: 50px;
-
-        width: 132px;
-    }
-
-
-    .seat-option {
-
-        padding: 8px;
-
-        font-size: 0.66rem;
-
-        gap: 6px;
+        max-width: 100%;
     }
 
 
     .player-wrapper {
-
         width: calc(100% - 0.6rem);
 
         bottom: max(
@@ -1861,114 +1194,45 @@ body {
             env(safe-area-inset-bottom)
         );
     }
-
-
-    .player-glass {
-
-        padding: 5px 6px;
-
-        gap: 5px;
-
-        border-radius: 20px;
-    }
-
-
-    .album-wrapper,
-    .album-art {
-
-        width: 42px;
-
-        height: 42px;
-
-        min-width: 42px;
-    }
-
-
-    .play-pause-center {
-
-        width: 18px;
-
-        height: 18px;
-    }
-
-
-    .track-title {
-
-        font-size: 0.66rem;
-    }
-
-
-    .track-artist {
-
-        font-size: 0.54rem;
-    }
-
-
-    .time-label {
-
-        font-size: 0.48rem;
-
-        min-width: 20px;
-    }
-
-
-    .ctrl-btn {
-
-        width: 26px;
-
-        height: 26px;
-
-        font-size: 0.7rem;
-    }
-
-
-    .play-btn {
-
-        width: 32px;
-
-        height: 32px;
-
-        font-size: 0.85rem;
-    }
-
-
-    .player-status {
-
-        font-size: 0.5rem;
-    }
-
-
-    .footer-text {
-
-        font-size: 0.45rem;
-    }
 }
 
 
 /* =========================================================
    MOBILE LANDSCAPE
    ---------------------------------------------------------
-   YAHI tumhari current main problem hai.
+   MAIN FIX
 ========================================================= */
 
 @media (max-width: 900px) and (orientation: landscape) {
 
     /*
-       Landscape mein height bahut kam hoti hai.
-       Isliye elements ko compact karna hai.
+       IMPORTANT:
+       Body ko scrollable rakhenge.
+       Isse user halka scroll kar sakta hai.
     */
 
+    html,
+    body {
+        min-height: 115vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+
+    /*
+       Background viewport ke saath fixed rahega.
+    */
 
     .saloon-bg {
+        position: fixed !important;
 
-        /*
-           Landscape mein width dominant hai,
-           isliye cover better hai.
-        */
+        inset: 0 !important;
 
-        background-size: cover;
+        width: 100%;
+        height: 100dvh;
 
-        background-position: center center;
+        background-size: cover !important;
+        background-position: center center !important;
     }
 
 
@@ -1977,8 +1241,7 @@ body {
     ===================================================== */
 
     .top-bar {
-
-        position: fixed;
+        position: fixed !important;
 
         top: max(
             5px,
@@ -1986,72 +1249,77 @@ body {
         );
 
         left: 8px;
-
         right: 8px;
 
-        padding: 0;
-
         height: 42px;
+
+        padding: 0;
 
         z-index: 150;
     }
 
 
-    .top-bar-center {
-
-        position: absolute;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-    }
-
-
     .online-badge {
-
         padding: 4px 8px;
-
         font-size: 0.62rem;
     }
 
 
     .pill-link {
-
         padding: 4px 7px;
-
         font-size: 0.62rem;
     }
 
 
     /* =====================================================
-       LOGO
-    ===================================================== */
+       LOGO - BIGGER IN LANDSCAPE
+       ===================================================== */
 
     .logo-container {
 
-        margin-top: 48px;
+        /*
+           Pehle 48px tha.
+           Thoda neeche aur bada logo.
+        */
+
+        margin-top: 55px;
 
         padding: 0 10px;
+
+        /*
+           Content ke neeche extra space.
+           Isse page scrollable rahega.
+        */
+
+        padding-bottom: 170px;
     }
 
 
     .saloon-hindi-svg {
 
-        width: min(48vw, 300px);
+        /*
+           Landscape phone mein logo bada.
+        */
 
-        max-height: 35vh;
+        width: min(62vw, 380px);
+
+        max-width: 380px;
+
+        height: auto;
+
+        max-height: none;
     }
 
 
     /* =====================================================
        LEFT BUTTONS
-       IMPORTANT:
-       Player ke upar nahi aayenge.
+       -----------------------------------------------------
+       Player ke upar overlap nahi honge.
     ===================================================== */
 
     .left-sound-buttons {
 
-        position: fixed;
+        position: fixed !important;
 
         left: max(
             6px,
@@ -2059,46 +1327,35 @@ body {
         );
 
         /*
-           Center ke bajay thoda upar.
-           Isse bottom player se collision nahi hoga.
+           Player ke area se upar.
         */
 
-        top: 42%;
+        top: 36%;
 
         transform: translateY(-50%);
 
         gap: 5px;
 
         z-index: 200;
-
-        max-height: none;
     }
 
 
-    .sound-btn {
+    .sound-btn,
+    .seat-dropdown-btn {
 
         width: 42px;
-
         height: 42px;
+
+        flex-shrink: 0;
     }
 
 
     .sound-btn i {
-
         font-size: 1rem;
     }
 
 
-    .seat-dropdown-btn {
-
-        width: 42px;
-
-        height: 42px;
-    }
-
-
     .seat-dropdown-btn i:first-child {
-
         font-size: 1rem;
     }
 
@@ -2130,13 +1387,15 @@ body {
 
 
     /* =====================================================
-       PLAYER
-       Compact horizontal player
+       MUSIC PLAYER
+       -----------------------------------------------------
+       Bottom par fixed rahega.
+       Background scroll karega but player nahi.
     ===================================================== */
 
     .player-wrapper {
 
-        position: fixed;
+        position: fixed !important;
 
         left: 50%;
 
@@ -2147,12 +1406,16 @@ body {
 
         transform: translateX(-50%);
 
+        /*
+           Left buttons ke liye side space.
+        */
+
         width: min(
             calc(100% - 70px),
-            650px
+            680px
         );
 
-        max-width: 650px;
+        max-width: 680px;
 
         z-index: 100;
     }
@@ -2162,7 +1425,7 @@ body {
 
         width: 100%;
 
-        min-height: 52px;
+        min-height: 54px;
 
         padding: 5px 8px;
 
@@ -2182,40 +1445,38 @@ body {
 
     .album-wrapper {
 
-        width: 42px;
+        width: 44px;
 
-        height: 42px;
+        height: 44px;
 
-        min-width: 42px;
+        min-width: 44px;
 
-        flex: 0 0 42px;
+        flex: 0 0 44px;
     }
 
 
     .album-art {
 
-        width: 42px;
+        width: 44px;
 
-        height: 42px;
+        height: 44px;
     }
 
 
     .play-pause-center {
 
-        width: 18px;
-
-        height: 18px;
+        width: 19px;
+        height: 19px;
     }
 
 
     .play-pause-center i {
-
         font-size: 9px;
     }
 
 
     /* =====================================================
-       TRACK INFO
+       TRACK
     ===================================================== */
 
     .track-info {
@@ -2230,17 +1491,29 @@ body {
 
     .track-title {
 
-        font-size: 0.68rem;
+        font-size: 0.70rem;
 
         line-height: 1.1;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
     }
 
 
     .track-artist {
 
-        font-size: 0.55rem;
+        font-size: 0.56rem;
 
         line-height: 1.1;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
     }
 
 
@@ -2254,15 +1527,15 @@ body {
 
     .time-label {
 
-        font-size: 0.48rem;
+        font-size: 0.49rem;
 
         min-width: 21px;
     }
 
 
     .progress-custom {
-
         height: 3px;
+        min-width: 20px;
     }
 
 
@@ -2279,72 +1552,87 @@ body {
         gap: 0 !important;
 
         margin: 0 !important;
+
+        display: flex !important;
     }
 
 
     .ctrl-btn {
 
-        width: 28px;
+        width: 29px;
 
-        height: 28px;
+        height: 29px;
 
-        font-size: 0.72rem;
+        flex-shrink: 0;
+
+        font-size: 0.74rem;
     }
 
 
     .play-btn {
 
-        width: 34px;
+        width: 35px;
 
-        height: 34px;
+        height: 35px;
 
-        font-size: 0.9rem;
+        font-size: 0.92rem;
     }
 
 
-    /* =====================================================
-       STATUS
-    ===================================================== */
+    /* Hide unnecessary text in low-height landscape */
 
-    .player-status {
-
-        display: none;
-    }
-
-
+    .player-status,
     .footer-text {
-
         display: none;
     }
 }
 
 
 /* =========================================================
-   VERY SHORT LANDSCAPE
-   iPhone 5 / SE landscape etc.
+   SMALL PHONE LANDSCAPE
+   iPhone 5 / old SE etc.
 ========================================================= */
 
 @media (max-width: 700px)
-       and (orientation: landscape)
-       and (max-height: 450px) {
+       and (orientation: landscape) {
+
+    html,
+    body {
+        min-height: 120vh;
+        overflow-y: auto;
+    }
+
+
+    /* Bigger logo than before */
 
     .logo-container {
 
-        margin-top: 43px;
+        margin-top: 50px;
+
+        padding-bottom: 150px;
     }
 
 
     .saloon-hindi-svg {
 
-        width: min(42vw, 260px);
+        width: min(68vw, 330px);
 
-        max-height: 30vh;
+        max-width: 330px;
+
+        max-height: none;
     }
 
 
+    /* Buttons */
+
     .left-sound-buttons {
 
-        top: 38%;
+        left: max(
+            5px,
+            env(safe-area-inset-left)
+        );
+
+        top: 34%;
 
         gap: 4px;
     }
@@ -2360,13 +1648,11 @@ body {
 
 
     .sound-btn i {
-
         font-size: 0.9rem;
     }
 
 
     .seat-dropdown-btn i:first-child {
-
         font-size: 0.9rem;
     }
 
@@ -2387,17 +1673,22 @@ body {
     }
 
 
+    /* Player */
+
     .player-wrapper {
 
         width: calc(100% - 60px);
 
-        bottom: 4px;
+        bottom: max(
+            4px,
+            env(safe-area-inset-bottom)
+        );
     }
 
 
     .player-glass {
 
-        min-height: 46px;
+        min-height: 47px;
 
         padding: 4px 6px;
 
@@ -2408,106 +1699,245 @@ body {
     .album-wrapper,
     .album-art {
 
-        width: 36px;
+        width: 37px;
 
-        height: 36px;
+        height: 37px;
 
-        min-width: 36px;
+        min-width: 37px;
     }
 
 
     .track-title {
-
-        font-size: 0.6rem;
+        font-size: 0.61rem;
     }
 
 
     .track-artist {
-
         font-size: 0.5rem;
     }
 
 
     .ctrl-btn {
 
-        width: 25px;
+        width: 26px;
 
-        height: 25px;
+        height: 26px;
     }
 
 
     .play-btn {
 
-        width: 30px;
+        width: 31px;
 
-        height: 30px;
+        height: 31px;
     }
 }
 
 
 /* =========================================================
-   LARGE TABLETS / IPAD LANDSCAPE
-   1025px+
+   ULTRA SMALL LANDSCAPE
+   320x480 type devices
 ========================================================= */
 
-@media (min-width: 1025px) and (max-width: 1366px)
-       and (orientation: landscape) {
+@media (max-width: 570px)
+       and (orientation: landscape)
+       and (max-height: 380px) {
 
-    .saloon-bg {
+    .logo-container {
 
-        background-size: cover;
+        margin-top: 46px;
 
-        background-position: center center;
-    }
-
-
-    .player-wrapper {
-
-        width: min(
-            calc(100% - 5rem),
-            720px
-        );
-    }
-
-
-    .left-sound-buttons {
-
-        left: 1.2rem;
-    }
-}
-
-
-/* =========================================================
-   LARGE DESKTOP
-========================================================= */
-
-@media (min-width: 1367px) {
-
-    .player-wrapper {
-
-        width: min(
-            calc(100% - 8rem),
-            760px
-        );
+        padding-bottom: 130px;
     }
 
 
     .saloon-hindi-svg {
 
-        width: min(32vw, 520px);
+        width: min(72vw, 310px);
+    }
+
+
+    .left-sound-buttons {
+
+        top: 32%;
+    }
+
+
+    .sound-btn,
+    .seat-dropdown-btn {
+
+        width: 35px;
+
+        height: 35px;
+    }
+
+
+    .player-wrapper {
+
+        width: calc(100% - 54px);
+
+        bottom: 3px;
+    }
+
+
+    .player-glass {
+
+        min-height: 43px;
+
+        padding: 3px 5px;
+
+        gap: 4px;
+    }
+
+
+    .album-wrapper,
+    .album-art {
+
+        width: 34px;
+
+        height: 34px;
+
+        min-width: 34px;
+    }
+
+
+    .track-title {
+        font-size: 0.56rem;
+    }
+
+
+    .track-artist {
+        font-size: 0.46rem;
+    }
+
+
+    .ctrl-btn {
+
+        width: 24px;
+
+        height: 24px;
+
+        font-size: 0.65rem;
+    }
+
+
+    .play-btn {
+
+        width: 29px;
+
+        height: 29px;
+
+        font-size: 0.8rem;
     }
 }
 
 
 /* =========================================================
-   SAFE AREA SUPPORT
-   iPhone notch / home indicator
+   TABLET / IPAD PORTRAIT
+   ---------------------------------------------------------
+   IMPORTANT:
+   Yahan bhi contain nahi.
+   Background cover rahega.
+========================================================= */
+
+@media (min-width: 601px)
+       and (max-width: 1024px)
+       and (orientation: portrait) {
+
+    .saloon-bg {
+
+        background-size: cover !important;
+
+        background-position: center center !important;
+    }
+
+
+    .logo-container {
+
+        margin-top: 10vh;
+
+        padding-bottom: 180px;
+    }
+
+
+    .saloon-hindi-svg {
+
+        width: min(72vw, 580px);
+
+        max-width: 580px;
+    }
+
+
+    .player-wrapper {
+
+        width: calc(100% - 2rem);
+
+        max-width: 760px;
+
+        bottom: 1.4rem;
+    }
+}
+
+
+/* =========================================================
+   TABLET / IPAD LANDSCAPE
+========================================================= */
+
+@media (min-width: 601px)
+       and (max-width: 1024px)
+       and (orientation: landscape) {
+
+    .saloon-bg {
+
+        background-size: cover !important;
+
+        background-position: center center !important;
+    }
+
+
+    .logo-container {
+
+        margin-top: 8vh;
+
+        padding-bottom: 180px;
+    }
+
+
+    .saloon-hindi-svg {
+
+        width: min(55vw, 520px);
+
+        max-width: 520px;
+    }
+
+
+    .left-sound-buttons {
+
+        top: 40%;
+
+        left: 1rem;
+    }
+
+
+    .player-wrapper {
+
+        width: min(
+            calc(100% - 100px),
+            760px
+        );
+
+        bottom: 1rem;
+    }
+}
+
+
+/* =========================================================
+   SAFE AREA
 ========================================================= */
 
 @supports (padding: max(0px)) {
 
     .top-bar {
-
         padding-left: max(
             0px,
             env(safe-area-inset-left)
@@ -2519,17 +1949,7 @@ body {
         );
     }
 
-
-    .player-wrapper {
-
-        margin-left: 0;
-
-        margin-right: 0;
-    }
-
-
     .left-sound-buttons {
-
         margin-left: env(safe-area-inset-left);
     }
 }
