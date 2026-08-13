@@ -2882,6 +2882,74 @@ const seatOptions =
   document.querySelectorAll(".seat-option");
 
 
+    /* =========================================================
+   BODI GALI BACKGROUND IMAGE
+========================================================= */
+
+const bodiGaliImage =
+  "https://abhinav050799.github.io/autowalaPlaylistWebsite/image/bodiladai.jpg";
+
+const saloonBg =
+  document.querySelector(".saloon-bg");
+    
+/* =========================================================
+   PRELOAD BODI GALI IMAGE
+========================================================= */
+
+const bodiGaliPreload =
+  new Image();
+
+bodiGaliPreload.src =
+  bodiGaliImage;
+
+
+/* =========================================================
+   SMOOTH IMAGE CHANGE
+========================================================= */
+
+function changeToBodiGaliImage() {
+
+  if (!saloonBg) return;
+
+  /* Fade out */
+
+  saloonBg.classList.add(
+    "bodi-transition"
+  );
+
+
+  setTimeout(function () {
+
+    saloonBg.style.backgroundImage =
+      `url("${bodiGaliImage}")`;
+
+    /* Fade in */
+
+    requestAnimationFrame(function () {
+
+      saloonBg.classList.remove(
+        "bodi-transition"
+      );
+
+    });
+
+  }, 350);
+
+}
+
+
+/* =========================================================
+   BODI GALI BUTTON CLICK
+========================================================= */
+
+bodiGaliBtn.addEventListener(
+  "click",
+  function () {
+
+    changeToBodiGaliImage();
+
+  }
+);
 /* =========================================================
    SEAT IMAGES
 ========================================================= */
