@@ -2112,7 +2112,34 @@ body {
         overflow-x: hidden;
         overflow-y: auto;
     }
+  .seat-selector {
+        position: fixed !important;
 
+        left: 0.7rem !important;
+
+        /*
+         * Music player ke upar rahega
+         */
+        top: 50% !important;
+
+        transform: translateY(-50%) !important;
+
+        z-index: 300 !important;
+    }
+
+    .seat-dropdown-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .seat-menu {
+        left: 60px;
+        top: 50%;
+
+        width: 155px;
+
+        z-index: 500 !important;
+    }
     /* Background hamesha fixed rahe */
     .saloon-bg {
         position: fixed !important;
@@ -3003,7 +3030,7 @@ body {
      PLAY
   ========================================================= */
 
-  function playMusic() {
+ function playMusic() {
 
     if (
       !playerReady ||
@@ -3016,13 +3043,47 @@ body {
       return;
     }
 
+
+    /* =====================================================
+       MAIN MUSIC PLAY HONE SE PEHLE
+       HORN + BODI GALI PAUSE
+    ===================================================== */
+
+    if (
+      hornPlayerReady &&
+      hornPlayer &&
+      hornPlayer.getPlayerState() ===
+        YT.PlayerState.PLAYING
+    ) {
+
+      hornPlayer.pauseVideo();
+
+    }
+
+
+    if (
+      bodiGaliPlayerReady &&
+      bodiGaliPlayer &&
+      bodiGaliPlayer.getPlayerState() ===
+        YT.PlayerState.PLAYING
+    ) {
+
+      bodiGaliPlayer.pauseVideo();
+
+    }
+
+
+    /* =====================================================
+       START MAIN MUSIC
+    ===================================================== */
+
     userStarted = true;
 
     player.playVideo();
 
     statusText.textContent =
       "Starting music...";
-  }
+}
 
 
   /* =========================================================
