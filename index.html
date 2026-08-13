@@ -1953,6 +1953,97 @@ body {
         margin-left: env(safe-area-inset-left);
     }
 }
+    /* =========================================================
+   MOBILE PORTRAIT - LOGO + PLAYER TOGETHER
+   Existing CSS ko override karega
+========================================================= */
+
+@media (max-width: 600px) and (orientation: portrait) {
+
+    html,
+    body {
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    /* Background hamesha fixed rahe */
+    .saloon-bg {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100%;
+        height: 100dvh;
+        background-size: cover !important;
+        background-position: center center !important;
+    }
+
+    /* Logo ko normal document flow mein rakho */
+    .logo-container {
+        position: relative;
+        margin-top: 4vh;
+        padding-bottom: 0;
+        z-index: 5;
+    }
+
+    /* SVG thoda controlled size */
+    .saloon-hindi-svg {
+        width: 88vw;
+        max-width: 460px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /*
+       PLAYER FIXED NAHI HOGA.
+       Logo ke baad document ke andar rahega.
+       Isliye scroll karoge to SVG + Player
+       ek saath upar jayenge.
+    */
+    .player-wrapper {
+        position: relative !important;
+
+        left: auto !important;
+        bottom: auto !important;
+
+        transform: none !important;
+
+        width: calc(100% - 1rem);
+        max-width: 680px;
+
+        margin: 120px auto 30px;
+
+        z-index: 100;
+    }
+
+    .player-glass {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE PORTRAIT
+   iPhone 5 / 320px
+========================================================= */
+
+@media (max-width: 360px) and (orientation: portrait) {
+
+    .logo-container {
+        margin-top: 2vh;
+    }
+
+    .saloon-hindi-svg {
+        width: 91vw;
+    }
+
+    .player-wrapper {
+        width: calc(100% - 0.6rem);
+
+        margin-top: 100px;
+        margin-bottom: 25px;
+    }
+}
   </style>
 </head>
 
