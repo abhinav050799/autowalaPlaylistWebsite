@@ -161,7 +161,7 @@
     }
 
     /* =========================
-       HERO / LOGO SECTION
+       HERO / LOGO
     ========================= */
 
     .logo-container {
@@ -182,10 +182,12 @@
     }
 
     /* =========================
-       YOUTUBE PLAYER (HIDDEN)
+       HIDDEN YOUTUBE PLAYERS
     ========================= */
 
-    #youtube-player {
+    #youtube-player,
+    #horn-youtube-player,
+    #bodi-gali-youtube-player {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -196,21 +198,7 @@
     }
 
     /* =========================
-       HORN YOUTUBE PLAYER
-    ========================= */
-
-    #horn-youtube-player {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      left: -9999px;
-      top: -9999px;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* =========================
-       LEFT SIDE SOUND BUTTONS
+       LEFT SOUND BUTTONS
     ========================= */
 
     .left-sound-buttons {
@@ -227,10 +215,10 @@
     }
 
     /* =========================
-       BUS HORN BUTTON
+       COMMON SOUND BUTTON
     ========================= */
 
-    .horn-btn {
+    .sound-btn {
       width: 58px;
       height: 58px;
 
@@ -257,22 +245,24 @@
         transform 0.15s ease,
         background 0.15s ease,
         box-shadow 0.15s ease;
+
+      padding: 0;
     }
 
-    .horn-btn i {
+    .sound-btn i {
       font-size: 1.5rem;
     }
 
-    .horn-btn:hover {
+    .sound-btn:hover {
       background: rgba(255, 255, 255, 0.16);
       transform: scale(1.06);
     }
 
-    .horn-btn:active {
+    .sound-btn:active {
       transform: scale(0.92);
     }
 
-    .horn-btn.playing {
+    .sound-btn.playing {
       background: rgba(255, 255, 255, 0.2);
 
       box-shadow:
@@ -285,49 +275,12 @@
     ========================= */
 
     .bodi-gali-btn {
-      min-width: 58px;
-      min-height: 42px;
-
-      padding: 7px 9px;
-
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 15px;
-
-      background: rgba(15, 15, 15, 0.58);
-      color: #ffffff;
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-      text-decoration: none;
-
-      font-size: 0.65rem;
+      font-size: 0.62rem !important;
       line-height: 1.05;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-
-      transition:
-        transform 0.15s ease,
-        background 0.15s ease;
     }
 
-    .bodi-gali-btn:hover {
-      background: rgba(255, 255, 255, 0.16);
-      color: #ffffff;
-      transform: translateY(-2px);
-    }
-
-    .bodi-gali-btn:active {
-      transform: scale(0.94);
+    .bodi-gali-btn i {
+      font-size: 1.35rem;
     }
 
     /* =========================
@@ -471,7 +424,7 @@
     }
 
     /* =========================
-       BUTTONS
+       PLAYER BUTTONS
     ========================= */
 
     .ctrl-btn {
@@ -514,7 +467,7 @@
     }
 
     /* =========================
-       STATUS & FOOTER
+       STATUS
     ========================= */
 
     .player-status {
@@ -547,10 +500,11 @@
     }
 
     /* =========================
-       MOBILE RESPONSIVE
+       MOBILE
     ========================= */
 
     @media (max-width: 600px) {
+
       .top-bar {
         position: relative;
         top: auto;
@@ -608,27 +562,22 @@
         height: 52px;
       }
 
-      /* LEFT BUTTONS MOBILE */
-
       .left-sound-buttons {
         left: 0.7rem;
         top: 50%;
       }
 
-      .horn-btn {
+      .sound-btn {
         width: 50px;
         height: 50px;
       }
 
-      .horn-btn i {
+      .sound-btn i {
         font-size: 1.25rem;
       }
 
       .bodi-gali-btn {
-        min-width: 50px;
-        min-height: 38px;
-        font-size: 0.58rem;
-        border-radius: 12px;
+        font-size: 0.55rem !important;
       }
     }
   </style>
@@ -636,20 +585,38 @@
 
 <body>
 
-  <!-- BACKGROUND -->
+  <!-- =========================
+       BACKGROUND
+  ========================= -->
+
   <div class="saloon-bg"></div>
 
-  <!-- TOP BAR -->
+
+  <!-- =========================
+       TOP BAR
+  ========================= -->
+
   <div class="top-bar">
+
     <div class="top-bar-center">
+
       <div class="online-badge">
+
         <span class="online-dot"></span>
+
         <span>27</span>
-        <span style="opacity:0.6;">online</span>
+
+        <span style="opacity:0.6;">
+          online
+        </span>
+
       </div>
+
     </div>
 
+
     <div class="d-flex gap-2 ms-auto">
+
       <a
         href="https://open.spotify.com/"
         target="_blank"
@@ -657,9 +624,14 @@
         class="pill-link"
       >
         <i class="bi bi-spotify"></i>
-        <span class="d-none d-sm-inline">Spotify</span>
+
+        <span class="d-none d-sm-inline">
+          Spotify
+        </span>
+
         <i class="bi bi-box-arrow-up-right"></i>
       </a>
+
 
       <a
         href="https://music.youtube.com/"
@@ -668,21 +640,34 @@
         class="pill-link"
       >
         <i class="bi bi-youtube"></i>
-        <span class="d-none d-sm-inline">YT Music</span>
+
+        <span class="d-none d-sm-inline">
+          YT Music
+        </span>
+
         <i class="bi bi-box-arrow-up-right"></i>
       </a>
+
     </div>
+
   </div>
 
-  <!-- LOGO (HINDI TYPOGRAPHY SVG) -->
+
+  <!-- =========================
+       LOGO
+  ========================= -->
+
   <div class="logo-container">
+
     <h1>
+
       <svg
         class="saloon-hindi-svg"
         viewBox="0 0 600 320"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+
         <text
           x="50%"
           y="120"
@@ -692,7 +677,9 @@
           font-weight="900"
           font-size="105"
           letter-spacing="2"
-        >डीलक्स</text>
+        >
+          डीलक्स
+        </text>
 
         <text
           x="50%"
@@ -703,58 +690,89 @@
           font-weight="900"
           font-size="115"
           letter-spacing="2"
-        >सैलून</text>
+        >
+          सैलून
+        </text>
+
       </svg>
+
     </h1>
+
   </div>
 
-  <!-- HIDDEN MAIN YOUTUBE PLAYER -->
-  <div id="youtube-player"></div>
-
-  <!-- HIDDEN HORN YOUTUBE PLAYER -->
-  <div id="horn-youtube-player"></div>
 
   <!-- =========================
-       LEFT SIDE BUTTONS
+       HIDDEN YOUTUBE PLAYERS
+  ========================= -->
+
+  <div id="youtube-player"></div>
+
+  <div id="horn-youtube-player"></div>
+
+  <div id="bodi-gali-youtube-player"></div>
+
+
+  <!-- =========================
+       LEFT SOUND BUTTONS
   ========================= -->
 
   <div class="left-sound-buttons">
 
-    <!-- BUS HORN -->
+
+    <!-- =========================
+         BUS HORN BUTTON
+    ========================= -->
+
     <button
       id="hornBtn"
-      class="horn-btn"
+      class="sound-btn"
       type="button"
       aria-label="Bus Horn"
       title="Bus Horn"
     >
+
       <i class="bi bi-bus-front-fill"></i>
+
     </button>
 
-    <!-- BODI GALI -->
-    <a
-      href="https://www.youtube.com/watch?v=VMPeaoG2fIc"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="bodi-gali-btn"
+
+    <!-- =========================
+         BODI GALI BUTTON
+    ========================= -->
+
+    <button
+      id="bodiGaliBtn"
+      class="sound-btn bodi-gali-btn"
+      type="button"
       aria-label="Bodi Gali"
       title="Bodi Gali"
     >
-      BODI<br>GALI
-    </a>
+
+      <i class="bi bi-music-note-beamed"></i>
+
+    </button>
+
 
   </div>
 
-  <!-- FLOATING PLAYER -->
+
+  <!-- =========================
+       FLOATING MUSIC PLAYER
+  ========================= -->
+
   <div class="player-wrapper">
+
     <div class="player-glass d-flex align-items-center gap-3">
 
+
       <!-- ALBUM -->
+
       <div
         class="album-wrapper"
         id="albumWrapper"
         title="Play / Pause"
       >
+
         <img
           id="albumArt"
           class="album-art"
@@ -763,39 +781,75 @@
         >
 
         <div class="play-pause-center">
-          <i id="overlayIcon" class="bi bi-play-fill"></i>
+
+          <i
+            id="overlayIcon"
+            class="bi bi-play-fill"
+          ></i>
+
         </div>
+
       </div>
 
+
       <!-- TRACK INFO -->
+
       <div class="track-info flex-grow-1">
-        <div id="trackTitle" class="track-title">
-          Kal Ho Naa Ho
+
+        <div
+          id="trackTitle"
+          class="track-title"
+        >
+          Gorakhyon Ki Ranjha
         </div>
 
-        <div id="trackArtist" class="track-artist">
-          Sonu Nigam
+        <div
+          id="trackArtist"
+          class="track-artist"
+        >
+          Manglesh Dangwal
         </div>
+
 
         <!-- PROGRESS -->
+
         <div class="progress-row">
-          <span id="currentTime" class="time-label">0:00</span>
+
+          <span
+            id="currentTime"
+            class="time-label"
+          >
+            0:00
+          </span>
+
 
           <div
             id="progressContainer"
             class="progress-custom"
           >
+
             <div
               id="progressFill"
               class="progress-fill"
             ></div>
+
           </div>
 
-          <span id="durationTime" class="time-label">0:00</span>
+
+          <span
+            id="durationTime"
+            class="time-label"
+          >
+            0:00
+          </span>
+
         </div>
+
       </div>
 
+
       <!-- CONTROLS -->
+
       <div class="player-controls d-flex align-items-center gap-1">
 
         <button
@@ -805,8 +859,11 @@
           aria-label="Previous Song"
           title="Previous"
         >
+
           <i class="bi bi-skip-backward-fill"></i>
+
         </button>
+
 
         <button
           id="playBtn"
@@ -815,11 +872,14 @@
           aria-label="Play"
           title="Play"
         >
+
           <i
             id="playIcon"
             class="bi bi-play-fill"
           ></i>
+
         </button>
+
 
         <button
           id="nextBtn"
@@ -828,15 +888,20 @@
           aria-label="Next Song"
           title="Next"
         >
+
           <i class="bi bi-skip-forward-fill"></i>
+
         </button>
 
       </div>
 
     </div>
 
+
     <!-- STATUS -->
+
     <div class="player-status">
+
       <span
         id="statusDot"
         class="status-dot"
@@ -845,13 +910,18 @@
       <span id="statusText">
         Press Play to start music
       </span>
+
     </div>
 
+
     <!-- FOOTER -->
+
     <div class="footer-text">
       ⚡ 90s Bollywood bangers · auto-play playlist
     </div>
+
   </div>
+
 
   <!-- =========================
        YOUTUBE IFRAME API
@@ -859,18 +929,14 @@
 
   <script src="https://www.youtube.com/iframe_api"></script>
 
+
   <script>
-    /*
-    ============================================================
-      AUTOVIBES MUSIC PLAYER
-    ============================================================
-    */
+
+    /* =========================================================
+       PLAYLIST
+    ========================================================= */
 
     const playlist = [
-
-      // =========================
-      // MANGLESH DANGWAL
-      // =========================
 
       {
         id: "AD0aph3hWXE",
@@ -886,10 +952,6 @@
         cover: "https://i.ytimg.com/vi/wO9w8JFD9Fo/hqdefault.jpg"
       },
 
-      // =========================
-      // NARENDRA SINGH NEGI
-      // =========================
-
       {
         id: "OyNnQI1bCzg",
         title: "Chali Bhai Motar Chali",
@@ -897,20 +959,12 @@
         cover: "https://i.ytimg.com/vi/OyNnQI1bCzg/hqdefault.jpg"
       },
 
-      // =========================
-      // GAJENDRA RANA
-      // =========================
-
       {
         id: "JvjEM78D9Nw",
         title: "Bhaiji Ku Byo",
         artist: "Gajendra Rana",
         cover: "https://i.ytimg.com/vi/JvjEM78D9Nw/hqdefault.jpg"
       },
-
-      // =========================
-      // KUMAONI
-      // =========================
 
       {
         id: "ijN3PK7j6PQ",
@@ -1011,38 +1065,10 @@
       },
 
       {
-        id: "OyNnQI1bCzg",
-        title: "Chali Bhai Motar Chali",
-        artist: "Narendra Singh Negi & Meena Rana",
-        cover: "https://i.ytimg.com/vi/OyNnQI1bCzg/hqdefault.jpg"
-      },
-
-      {
-        id: "JvjEM78D9Nw",
-        title: "Bhaiji Ku Byo",
-        artist: "Gajendra Rana",
-        cover: "https://i.ytimg.com/vi/JvjEM78D9Nw/hqdefault.jpg"
-      },
-
-      {
         id: "tF75jVaQ8bc",
         title: "Rani Gorkyani",
         artist: "Gajendra Rana",
         cover: "https://i.ytimg.com/vi/tF75jVaQ8bc/hqdefault.jpg"
-      },
-
-      {
-        id: "wO9w8JFD9Fo",
-        title: "Negi Ki Cheli",
-        artist: "Manglesh Dangwal",
-        cover: "https://i.ytimg.com/vi/wO9w8JFD9Fo/hqdefault.jpg"
-      },
-
-      {
-        id: "AD0aph3hWXE",
-        title: "Gorakhyon Ki Ranjha",
-        artist: "Manglesh Dangwal",
-        cover: "https://i.ytimg.com/vi/AD0aph3hWXE/hqdefault.jpg"
       },
 
       {
@@ -1069,124 +1095,208 @@
     ];
 
 
-    /* =========================
+    /* =========================================================
        VARIABLES
-    ========================= */
+    ========================================================= */
 
     let player = null;
     let playerReady = false;
+
     let currentIndex = 0;
     let isPlaying = false;
     let userStarted = false;
+
     let progressTimer = null;
 
 
-    /* =========================
+    /* =========================================================
        DOM
-    ========================= */
+    ========================================================= */
 
-    const playBtn = document.getElementById("playBtn");
-    const playIcon = document.getElementById("playIcon");
-    const overlayIcon = document.getElementById("overlayIcon");
-    const albumArt = document.getElementById("albumArt");
-    const albumWrapper = document.getElementById("albumWrapper");
-    const trackTitle = document.getElementById("trackTitle");
-    const trackArtist = document.getElementById("trackArtist");
-    const currentTime = document.getElementById("currentTime");
-    const durationTime = document.getElementById("durationTime");
-    const progressFill = document.getElementById("progressFill");
-    const progressContainer = document.getElementById("progressContainer");
-    const statusText = document.getElementById("statusText");
-    const statusDot = document.getElementById("statusDot");
+    const playBtn =
+      document.getElementById("playBtn");
+
+    const playIcon =
+      document.getElementById("playIcon");
+
+    const overlayIcon =
+      document.getElementById("overlayIcon");
+
+    const albumArt =
+      document.getElementById("albumArt");
+
+    const albumWrapper =
+      document.getElementById("albumWrapper");
+
+    const trackTitle =
+      document.getElementById("trackTitle");
+
+    const trackArtist =
+      document.getElementById("trackArtist");
+
+    const currentTime =
+      document.getElementById("currentTime");
+
+    const durationTime =
+      document.getElementById("durationTime");
+
+    const progressFill =
+      document.getElementById("progressFill");
+
+    const progressContainer =
+      document.getElementById("progressContainer");
+
+    const statusText =
+      document.getElementById("statusText");
+
+    const statusDot =
+      document.getElementById("statusDot");
 
 
-    /* =========================
-       FORMAT TIME
-    ========================= */
+    /* =========================================================
+       TIME FORMAT
+    ========================================================= */
 
     function formatTime(seconds) {
-      if (!seconds || isNaN(seconds) || seconds < 0) {
+
+      if (
+        !seconds ||
+        isNaN(seconds) ||
+        seconds < 0
+      ) {
         return "0:00";
       }
 
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
+      const mins =
+        Math.floor(seconds / 60);
 
-      return mins + ":" + String(secs).padStart(2, "0");
+      const secs =
+        Math.floor(seconds % 60);
+
+      return (
+        mins +
+        ":" +
+        String(secs).padStart(2, "0")
+      );
     }
 
 
-    /* =========================
-       UPDATE UI
-    ========================= */
+    /* =========================================================
+       PLAY BUTTON UI
+    ========================================================= */
 
     function updatePlayButton(playing) {
+
       isPlaying = playing;
 
       if (playing) {
 
-        playIcon.className = "bi bi-pause-fill";
-        overlayIcon.className = "bi bi-pause-fill";
+        playIcon.className =
+          "bi bi-pause-fill";
 
-        albumArt.style.animationPlayState = "running";
+        overlayIcon.className =
+          "bi bi-pause-fill";
 
-        statusDot.classList.add("playing");
+        albumArt.style.animationPlayState =
+          "running";
 
-        statusText.textContent = "Now playing";
+        statusDot.classList.add(
+          "playing"
+        );
+
+        statusText.textContent =
+          "Now playing";
 
       } else {
 
-        playIcon.className = "bi bi-play-fill";
-        overlayIcon.className = "bi bi-play-fill";
+        playIcon.className =
+          "bi bi-play-fill";
 
-        albumArt.style.animationPlayState = "paused";
+        overlayIcon.className =
+          "bi bi-play-fill";
 
-        statusDot.classList.remove("playing");
+        albumArt.style.animationPlayState =
+          "paused";
 
-        statusText.textContent = "Paused";
+        statusDot.classList.remove(
+          "playing"
+        );
+
+        statusText.textContent =
+          "Paused";
       }
     }
 
 
-    /* =========================
-       LOAD TRACK UI
-    ========================= */
+    /* =========================================================
+       UPDATE TRACK UI
+    ========================================================= */
 
     function updateTrackUI(index) {
 
-      const song = playlist[index];
+      const song =
+        playlist[index];
 
       if (!song) return;
 
-      trackTitle.textContent = song.title;
-      trackArtist.textContent = song.artist;
+      trackTitle.textContent =
+        song.title;
 
-      albumArt.src = song.cover;
+      trackArtist.textContent =
+        song.artist;
 
-      currentTime.textContent = "0:00";
-      durationTime.textContent = "0:00";
+      albumArt.src =
+        song.cover;
 
-      progressFill.style.width = "0%";
+      currentTime.textContent =
+        "0:00";
+
+      durationTime.textContent =
+        "0:00";
+
+      progressFill.style.width =
+        "0%";
     }
 
 
-    /* =========================
-       LOAD SONG
-    ========================= */
+    /* =========================================================
+       LOAD TRACK
+    ========================================================= */
 
-    function loadTrack(index, autoPlay = false) {
+    function loadTrack(
+      index,
+      autoPlay = false
+    ) {
 
-      if (!playerReady || !player) return;
+      if (
+        !playerReady ||
+        !player
+      ) {
+        return;
+      }
 
-      if (index < 0 || index >= playlist.length) return;
+      if (
+        index < 0 ||
+        index >= playlist.length
+      ) {
+        return;
+      }
 
-      currentIndex = index;
+      currentIndex =
+        index;
 
-      const song = playlist[currentIndex];
+      const song =
+        playlist[currentIndex];
 
-      updateTrackUI(currentIndex);
+      updateTrackUI(
+        currentIndex
+      );
 
-      statusText.textContent = "Loading " + song.title + "...";
+      statusText.textContent =
+        "Loading " +
+        song.title +
+        "...";
+
 
       if (autoPlay) {
 
@@ -1201,18 +1311,20 @@
           videoId: song.id,
           startSeconds: 0
         });
-
       }
     }
 
 
-    /* =========================
+    /* =========================================================
        PLAY
-    ========================= */
+    ========================================================= */
 
     function playMusic() {
 
-      if (!playerReady || !player) {
+      if (
+        !playerReady ||
+        !player
+      ) {
 
         statusText.textContent =
           "YouTube player loading...";
@@ -1229,21 +1341,26 @@
     }
 
 
-    /* =========================
+    /* =========================================================
        PAUSE
-    ========================= */
+    ========================================================= */
 
     function pauseMusic() {
 
-      if (!playerReady || !player) return;
+      if (
+        !playerReady ||
+        !player
+      ) {
+        return;
+      }
 
       player.pauseVideo();
     }
 
 
-    /* =========================
+    /* =========================================================
        TOGGLE
-    ========================= */
+    ========================================================= */
 
     function togglePlay() {
 
@@ -1266,18 +1383,22 @@
     }
 
 
-    /* =========================
-       NEXT TRACK
-    ========================= */
+    /* =========================================================
+       NEXT
+    ========================================================= */
 
     function nextTrack() {
 
       currentIndex =
-        (currentIndex + 1) % playlist.length;
+        (currentIndex + 1) %
+        playlist.length;
 
-      updateTrackUI(currentIndex);
+      updateTrackUI(
+        currentIndex
+      );
 
-      const song = playlist[currentIndex];
+      const song =
+        playlist[currentIndex];
 
       statusText.textContent =
         "Loading next song...";
@@ -1291,19 +1412,26 @@
     }
 
 
-    /* =========================
-       PREVIOUS TRACK
-    ========================= */
+    /* =========================================================
+       PREVIOUS
+    ========================================================= */
 
     function prevTrack() {
 
       currentIndex =
-        (currentIndex - 1 + playlist.length) %
+        (
+          currentIndex -
+          1 +
+          playlist.length
+        ) %
         playlist.length;
 
-      updateTrackUI(currentIndex);
+      updateTrackUI(
+        currentIndex
+      );
 
-      const song = playlist[currentIndex];
+      const song =
+        playlist[currentIndex];
 
       statusText.textContent =
         "Loading previous song...";
@@ -1317,114 +1445,169 @@
     }
 
 
-    /* =========================
+    /* =========================================================
        YOUTUBE API READY
-    ========================= */
+    ========================================================= */
 
-    window.onYouTubeIframeAPIReady = function () {
+    window.onYouTubeIframeAPIReady =
+      function () {
 
-      console.log("YouTube API Ready");
+        console.log(
+          "YouTube API Ready"
+        );
 
 
-      /* =========================
-         MAIN MUSIC PLAYER
-      ========================= */
+        /* =========================
+           MAIN PLAYER
+        ========================= */
 
-      player = new YT.Player(
-        "youtube-player",
-        {
+        player =
+          new YT.Player(
+            "youtube-player",
+            {
 
-          width: "1",
-          height: "1",
+              width: "1",
+              height: "1",
 
-          videoId: playlist[0].id,
+              videoId:
+                playlist[0].id,
 
-          playerVars: {
-            autoplay: 0,
-            controls: 0,
-            rel: 0,
-            playsinline: 1,
-            modestbranding: 1,
-            iv_load_policy: 3
-          },
+              playerVars: {
+                autoplay: 0,
+                controls: 0,
+                rel: 0,
+                playsinline: 1,
+                modestbranding: 1,
+                iv_load_policy: 3
+              },
 
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange,
-            onError: onPlayerError
-          }
-        }
+              events: {
+
+                onReady:
+                  onPlayerReady,
+
+                onStateChange:
+                  onPlayerStateChange,
+
+                onError:
+                  onPlayerError
+              }
+
+            }
+          );
+
+
+        /* =========================
+           HORN PLAYER
+        ========================= */
+
+        createHornPlayer();
+
+
+        /* =========================
+           BODI GALI PLAYER
+        ========================= */
+
+        createBodiGaliPlayer();
+
+      };
+
+
+    /* =========================================================
+       MAIN PLAYER READY
+    ========================================================= */
+
+    function onPlayerReady() {
+
+      console.log(
+        "YouTube Player Ready"
       );
-
-
-      /* =========================
-         BUS HORN PLAYER
-      ========================= */
-
-      createHornPlayer();
-    };
-
-
-    /* =========================
-       PLAYER READY
-    ========================= */
-
-    function onPlayerReady(event) {
-
-      console.log("YouTube Player Ready");
 
       playerReady = true;
 
-      updateTrackUI(currentIndex);
+      updateTrackUI(
+        currentIndex
+      );
 
       statusText.textContent =
         "Press Play to start music";
 
       progressTimer =
-        setInterval(updateProgress, 500);
+        setInterval(
+          updateProgress,
+          500
+        );
     }
 
 
-    /* =========================
-       PLAYER STATE
-    ========================= */
+    /* =========================================================
+       MAIN PLAYER STATE
+    ========================================================= */
 
     function onPlayerStateChange(event) {
 
-      const state = event.data;
+      const state =
+        event.data;
 
-      console.log("YouTube state:", state);
+      console.log(
+        "YouTube state:",
+        state
+      );
 
 
-      if (state === YT.PlayerState.PLAYING) {
+      if (
+        state ===
+        YT.PlayerState.PLAYING
+      ) {
 
         updatePlayButton(true);
 
-      } else if (state === YT.PlayerState.PAUSED) {
+      }
+
+
+      else if (
+        state ===
+        YT.PlayerState.PAUSED
+      ) {
 
         updatePlayButton(false);
 
-      } else if (state === YT.PlayerState.BUFFERING) {
+      }
+
+
+      else if (
+        state ===
+        YT.PlayerState.BUFFERING
+      ) {
 
         statusText.textContent =
           "Buffering...";
 
-      } else if (state === YT.PlayerState.ENDED) {
+      }
+
+
+      else if (
+        state ===
+        YT.PlayerState.ENDED
+      ) {
 
         updatePlayButton(false);
 
-        setTimeout(function () {
+        setTimeout(
+          function () {
 
-          nextTrack();
+            nextTrack();
 
-        }, 300);
+          },
+          300
+        );
       }
     }
 
 
-    /* =========================
+    /* =========================================================
        YOUTUBE ERROR
-    ========================= */
+    ========================================================= */
 
     function onPlayerError(event) {
 
@@ -1436,21 +1619,29 @@
       statusText.textContent =
         "This track cannot play. Trying next...";
 
-      setTimeout(function () {
+      setTimeout(
+        function () {
 
-        nextTrack();
+          nextTrack();
 
-      }, 1000);
+        },
+        1000
+      );
     }
 
 
-    /* =========================
+    /* =========================================================
        PROGRESS
-    ========================= */
+    ========================================================= */
 
     function updateProgress() {
 
-      if (!playerReady || !player) return;
+      if (
+        !playerReady ||
+        !player
+      ) {
+        return;
+      }
 
       try {
 
@@ -1460,13 +1651,22 @@
         const duration =
           player.getDuration();
 
-        if (duration && duration > 0) {
+        if (
+          duration &&
+          duration > 0
+        ) {
 
           const percent =
-            (current / duration) * 100;
+            (
+              current /
+              duration
+            ) * 100;
 
           progressFill.style.width =
-            Math.min(100, percent) + "%";
+            Math.min(
+              100,
+              percent
+            ) + "%";
 
           currentTime.textContent =
             formatTime(current);
@@ -1485,48 +1685,60 @@
     }
 
 
-    /* =========================
+    /* =========================================================
        SEEK
-    ========================= */
+    ========================================================= */
 
     progressContainer.addEventListener(
       "click",
       function (event) {
 
-        if (!playerReady || !player) return;
+        if (
+          !playerReady ||
+          !player
+        ) {
+          return;
+        }
 
         const rect =
           this.getBoundingClientRect();
 
         const clickX =
-          event.clientX - rect.left;
+          event.clientX -
+          rect.left;
 
         const percentage =
           Math.max(
             0,
             Math.min(
               1,
-              clickX / rect.width
+              clickX /
+              rect.width
             )
           );
 
         const duration =
           player.getDuration();
 
-        if (duration && duration > 0) {
+        if (
+          duration &&
+          duration > 0
+        ) {
 
           player.seekTo(
-            percentage * duration,
+            percentage *
+            duration,
             true
           );
         }
+
       }
     );
 
 
-    /* =========================
+    /* =========================================================
        BUTTON EVENTS
-    ========================= */
+    ========================================================= */
 
     playBtn.addEventListener(
       "click",
@@ -1555,7 +1767,9 @@
         function () {
 
           if (playerReady) {
+
             nextTrack();
+
           }
 
         }
@@ -1569,61 +1783,84 @@
         function () {
 
           if (playerReady) {
+
             prevTrack();
+
           }
 
         }
       );
 
 
-    /* =========================
+    /* =========================================================
        KEYBOARD
-    ========================= */
+    ========================================================= */
 
     document.addEventListener(
       "keydown",
       function (event) {
 
-        if (event.code === "Space") {
+        if (
+          event.code ===
+          "Space"
+        ) {
 
           event.preventDefault();
 
           togglePlay();
 
-        } else if (
-          event.code === "ArrowRight"
-        ) {
-
-          event.preventDefault();
-
-          if (playerReady) {
-            nextTrack();
-          }
-
-        } else if (
-          event.code === "ArrowLeft"
-        ) {
-
-          event.preventDefault();
-
-          if (playerReady) {
-            prevTrack();
-          }
         }
+
+
+        else if (
+          event.code ===
+          "ArrowRight"
+        ) {
+
+          event.preventDefault();
+
+          if (playerReady) {
+
+            nextTrack();
+
+          }
+
+        }
+
+
+        else if (
+          event.code ===
+          "ArrowLeft"
+        ) {
+
+          event.preventDefault();
+
+          if (playerReady) {
+
+            prevTrack();
+
+          }
+
+        }
+
       }
     );
 
 
-    /* =========================
+    /* =========================================================
        CLEANUP
-    ========================= */
+    ========================================================= */
 
     window.addEventListener(
       "beforeunload",
       function () {
 
         if (progressTimer) {
-          clearInterval(progressTimer);
+
+          clearInterval(
+            progressTimer
+          );
+
         }
 
       }
@@ -1635,15 +1872,18 @@
     ========================================================= */
 
     let hornPlayer = null;
+
     let hornPlayerReady = false;
 
     const hornBtn =
-      document.getElementById("hornBtn");
+      document.getElementById(
+        "hornBtn"
+      );
 
 
-    /* =========================
+    /* =========================================================
        CREATE HORN PLAYER
-    ========================= */
+    ========================================================= */
 
     function createHornPlayer() {
 
@@ -1655,19 +1895,18 @@
             width: "1",
             height: "1",
 
-            /*
-              Bus horn YouTube Shorts video
-            */
-
-            videoId: "S3CfBvhzvsc",
+            videoId:
+              "S3CfBvhzvsc",
 
             playerVars: {
+
               autoplay: 0,
               controls: 0,
               rel: 0,
               playsinline: 1,
               modestbranding: 1,
               iv_load_policy: 3
+
             },
 
             events: {
@@ -1680,15 +1919,17 @@
 
               onError:
                 onHornPlayerError
+
             }
+
           }
         );
     }
 
 
-    /* =========================
-       HORN PLAYER READY
-    ========================= */
+    /* =========================================================
+       HORN READY
+    ========================================================= */
 
     function onHornPlayerReady() {
 
@@ -1696,15 +1937,18 @@
         "Horn Player Ready"
       );
 
-      hornPlayerReady = true;
+      hornPlayerReady =
+        true;
     }
 
 
-    /* =========================
+    /* =========================================================
        HORN STATE
-    ========================= */
+    ========================================================= */
 
-    function onHornPlayerStateChange(event) {
+    function onHornPlayerStateChange(
+      event
+    ) {
 
       if (
         event.data ===
@@ -1728,15 +1972,19 @@
         hornBtn.classList.remove(
           "playing"
         );
+
       }
+
     }
 
 
-    /* =========================
+    /* =========================================================
        HORN ERROR
-    ========================= */
+    ========================================================= */
 
-    function onHornPlayerError(event) {
+    function onHornPlayerError(
+      event
+    ) {
 
       console.error(
         "Horn YouTube Error:",
@@ -1749,18 +1997,13 @@
     }
 
 
-    /* =========================
-       HORN BUTTON CLICK
-    ========================= */
+    /* =========================================================
+       HORN CLICK
+    ========================================================= */
 
     hornBtn.addEventListener(
       "click",
       function () {
-
-        /*
-          Agar YouTube horn player
-          abhi ready nahi hai
-        */
 
         if (
           !hornPlayerReady ||
@@ -1770,15 +2013,9 @@
           return;
         }
 
-
         const state =
           hornPlayer.getPlayerState();
 
-
-        /*
-          Agar horn already baj raha hai
-          to pause
-        */
 
         if (
           state ===
@@ -1791,17 +2028,199 @@
         }
 
 
-        /*
-          Har click par horn
-          beginning se chalega
-        */
-
         hornPlayer.seekTo(
           0,
           true
         );
 
         hornPlayer.playVideo();
+
+      }
+    );
+
+
+    /* =========================================================
+       BODI GALI
+    ========================================================= */
+
+    let bodiGaliPlayer = null;
+
+    let bodiGaliPlayerReady = false;
+
+    const bodiGaliBtn =
+      document.getElementById(
+        "bodiGaliBtn"
+      );
+
+
+    /* =========================================================
+       CREATE BODI GALI PLAYER
+    ========================================================= */
+
+    function createBodiGaliPlayer() {
+
+      bodiGaliPlayer =
+        new YT.Player(
+          "bodi-gali-youtube-player",
+          {
+
+            width: "1",
+            height: "1",
+
+            /*
+              Bodi Gali YouTube video
+            */
+
+            videoId:
+              "VMPeaoG2fIc",
+
+            playerVars: {
+
+              autoplay: 0,
+              controls: 0,
+              rel: 0,
+              playsinline: 1,
+              modestbranding: 1,
+              iv_load_policy: 3
+
+            },
+
+            events: {
+
+              onReady:
+                onBodiGaliPlayerReady,
+
+              onStateChange:
+                onBodiGaliPlayerStateChange,
+
+              onError:
+                onBodiGaliPlayerError
+
+            }
+
+          }
+        );
+    }
+
+
+    /* =========================================================
+       BODI GALI READY
+    ========================================================= */
+
+    function onBodiGaliPlayerReady() {
+
+      console.log(
+        "Bodi Gali Player Ready"
+      );
+
+      bodiGaliPlayerReady =
+        true;
+    }
+
+
+    /* =========================================================
+       BODI GALI STATE
+    ========================================================= */
+
+    function onBodiGaliPlayerStateChange(
+      event
+    ) {
+
+      if (
+        event.data ===
+        YT.PlayerState.PLAYING
+      ) {
+
+        bodiGaliBtn.classList.add(
+          "playing"
+        );
+
+      }
+
+
+      if (
+        event.data ===
+        YT.PlayerState.PAUSED ||
+        event.data ===
+        YT.PlayerState.ENDED
+      ) {
+
+        bodiGaliBtn.classList.remove(
+          "playing"
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       BODI GALI ERROR
+    ========================================================= */
+
+    function onBodiGaliPlayerError(
+      event
+    ) {
+
+      console.error(
+        "Bodi Gali YouTube Error:",
+        event.data
+      );
+
+      bodiGaliBtn.classList.remove(
+        "playing"
+      );
+    }
+
+
+    /* =========================================================
+       BODI GALI BUTTON CLICK
+    ========================================================= */
+
+    bodiGaliBtn.addEventListener(
+      "click",
+      function () {
+
+        if (
+          !bodiGaliPlayerReady ||
+          !bodiGaliPlayer
+        ) {
+
+          return;
+        }
+
+        const state =
+          bodiGaliPlayer.getPlayerState();
+
+
+        /*
+          Agar already playing hai
+          to pause
+        */
+
+        if (
+          state ===
+          YT.PlayerState.PLAYING
+        ) {
+
+          bodiGaliPlayer.pauseVideo();
+
+          return;
+        }
+
+
+        /*
+          Har click par
+          beginning se play
+        */
+
+        bodiGaliPlayer.seekTo(
+          0,
+          true
+        );
+
+        bodiGaliPlayer.playVideo();
+
       }
     );
 
@@ -1809,6 +2228,7 @@
 
 
   <!-- Bootstrap JS -->
+
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
   ></script>
